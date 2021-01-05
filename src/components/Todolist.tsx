@@ -11,6 +11,7 @@ type PropsType = {
     removeTask: (todolistID: string, taskID: string) => void
     changeFilter: (todolistID: string, filterValue: FilterValuesType) => void
     changeTaskStatus: (todolistID: string, taskID: string, isDone: boolean) => void
+    removeTodolist: (todolistID: string) => void
 }
 
 // Component
@@ -47,10 +48,14 @@ function Todolist(props: PropsType) {
         props.changeFilter(props.id, "completed")
     }
 
+    const removeTodolist = () => {
+        props.removeTodolist(props.id)
+    }
+
     // Render
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3>{props.title}<button onClick={removeTodolist}>x</button></h3>
             {/*Add new task input*/}
             <div>
                 <input value={title}
