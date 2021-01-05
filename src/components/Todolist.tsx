@@ -1,15 +1,16 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
-import {FilterValuesType, TaskType} from "../App";
+import {FilterValuesType, TaskStateType, TaskType} from "../App";
 
 // Types
 type PropsType = {
-    title: string;
-    filter: FilterValuesType;
-    tasks: Array<TaskType>;
-    addTask: (title: string) => void
-    removeTask: (task: string) => void;
-    changeFilter: (filterValue: FilterValuesType) => void;
-    changeTaskStatus: (id: string, isDone: boolean) => void;
+    id: string
+    title: string
+    filter: FilterValuesType
+    tasks: Array<TaskType>
+    addTask: (todolistID: string, title: string) => void
+    removeTask: (todolistID: string, taskID: string) => void
+    changeFilter: (todolistID: string, filterValue: FilterValuesType) => void
+    changeTaskStatus: (todolistID: string, taskID: string, isDone: boolean) => void
 }
 
 // Component
@@ -23,7 +24,7 @@ function Todolist(props: PropsType) {
     const addTask = () => {
         const taskTitle = title.trim()
         if (taskTitle) {
-            props.addTask(taskTitle.trim());
+            props.addTask(props.id, taskTitle.trim());
             setTitle('')
         } else {
             setError("Title is required!")
@@ -37,20 +38,20 @@ function Todolist(props: PropsType) {
         if (e.key === "Enter") addTask()
     }
     const filterAll = () => {
-        props.changeFilter("all")
+        props.changeFilter(props.id, "all")
     }
     const filterActive = () => {
-        props.changeFilter("active")
+        props.changeFilter(props.id, "active")
     }
     const filterCompleted = () => {
-        props.changeFilter("completed")
+        props.changeFilter(props.id, "completed")
     }
 
     // Render
     return (
         <div>
             <h3>{props.title}</h3>
-            {/*Add new task*/}
+            {/*Add new task input*/}
             <div>
                 <input value={title}
                        onChange={onChangeHandler}
@@ -67,10 +68,10 @@ function Todolist(props: PropsType) {
                 {
                     props.tasks.map(task => {
                         const removeTask = () => {
-                            props.removeTask(task.id)
+                            props.removeTask(props.id, task.id)
                         }
                         const changeStatus = (e: ChangeEvent<HTMLInputElement>) => {
-                            props.changeTaskStatus(task.id, e.currentTarget.checked)
+                            props.changeTaskStatus(props.id, task.id, e.currentTarget.checked)
                         }
                         return (
                             <li key={task.id}
