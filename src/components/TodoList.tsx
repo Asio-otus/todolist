@@ -1,5 +1,7 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
 import {FilterValuesType, TaskStateType, TaskType} from "../App";
+import {AddItemForm} from "./AddItemForm/AddItemForm";
+import {EditableSpan} from "./EditableSpan/EditableSpan";
 
 // Types
 type PropsType = {
@@ -12,38 +14,26 @@ type PropsType = {
     changeFilter: (todolistID: string, filterValue: FilterValuesType) => void
     changeTaskStatus: (todolistID: string, taskID: string, isDone: boolean) => void
     removeTodolist: (todolistID: string) => void
+    changeTaskTitle: (taskID: string, title: string, todolistID: string) => void
+    changeTodoListTitle: (title: string, todoListID: string) => void
 }
 
 // Component
-function Todolist(props: PropsType) {
-
-    // Local state
-    const [title, setTitle] = useState<string>('');
-    const [error, setError] = useState<string | null>(null);
+function TodoList(props: PropsType) {
 
     // Functions
-    const addTask = () => {
-        const taskTitle = title.trim()
-        if (taskTitle) {
-            props.addTask(props.id, taskTitle.trim());
-            setTitle('')
-        } else {
-            setError("Title is required!")
-        }
+    const addTask = (title: string) => {
+        props.addTask(props.id, title)
     }
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setError(null)
-        setTitle(e.currentTarget.value)
-    }
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") addTask()
-    }
+
     const filterAll = () => {
         props.changeFilter(props.id, "all")
     }
+
     const filterActive = () => {
         props.changeFilter(props.id, "active")
     }
+
     const filterCompleted = () => {
         props.changeFilter(props.id, "completed")
     }
@@ -52,22 +42,19 @@ function Todolist(props: PropsType) {
         props.removeTodolist(props.id)
     }
 
+    const changeTodolistTitle = (title: string) => {
+        props.changeTodoListTitle(title, props.id)
+    }
+
     // Render
     return (
         <div>
-            <h3>{props.title}<button onClick={removeTodolist}>x</button></h3>
+            <h3>
+                <EditableSpan title={props.title} changeTitle={changeTodolistTitle} />
+                <button onClick={removeTodolist}>x</button>
+            </h3>
             {/*Add new task input*/}
-            <div>
-                <input value={title}
-                       onChange={onChangeHandler}
-                       onKeyPress={onKeyPressHandler}
-                       className={error ? "error" : ""}
-                />
-                <button onClick={addTask}>+</button>
-                {error && <div className="error-message">
-                    {error}
-                </div>}
-            </div>
+            <AddItemForm addItem={addTask} />
             {/*Tasks*/}
             <ul>
                 {
@@ -78,6 +65,9 @@ function Todolist(props: PropsType) {
                         const changeStatus = (e: ChangeEvent<HTMLInputElement>) => {
                             props.changeTaskStatus(props.id, task.id, e.currentTarget.checked)
                         }
+                        const changeTitle = (title: string) => {
+                            props.changeTaskTitle(task.id, title, props.id)
+                        }
                         return (
                             <li key={task.id}
                                 className={task.isDone ? "is-done" : ""}>
@@ -85,7 +75,7 @@ function Todolist(props: PropsType) {
                                     onChange={changeStatus}
                                     type="checkbox"
                                     checked={task.isDone}/>
-                                <span>{task.title}</span>
+                                <EditableSpan title={task.title} changeTitle={changeTitle} />
                                 <button onClick={removeTask}>x</button>
                             </li>
                         )
@@ -111,4 +101,4 @@ function Todolist(props: PropsType) {
     );
 }
 
-export default Todolist;
+export default TodoList;

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Todolist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +28,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="D:\Web\todolist\node_modules\typescript\lib" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="D:\web\todolist\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\web\todolist\src\components\EditableSpan" />
+      <recent name="D:\web\todolist\src\components" />
+      <recent name="D:\web\todolist\src\AddItemForm" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -40,6 +51,10 @@
       <workItem from="1609243921478" duration="3428000" />
       <workItem from="1609249399392" duration="7603000" />
       <workItem from="1609858444142" duration="12222000" />
+      <workItem from="1610464029199" duration="20000" />
+      <workItem from="1610464067680" duration="255000" />
+      <workItem from="1610464342925" duration="6559000" />
+      <workItem from="1610472125769" duration="5378000" />
     </task>
     <servers />
   </component>
@@ -56,5 +71,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
