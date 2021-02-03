@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react';
-import {FilterValuesType, TaskStateType, TaskType} from "../App";
+import {FilterValuesType, TasksStateType, TaskType} from "../App";
 import {AddItemForm} from "./AddItemForm/AddItemForm";
 import {EditableSpan} from "./EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
