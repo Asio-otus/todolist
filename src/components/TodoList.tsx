@@ -1,9 +1,10 @@
 import React, {ChangeEvent} from 'react';
-import {FilterValuesType, TasksStateType, TaskType} from "../App";
 import {AddItemForm} from "./AddItemForm/AddItemForm";
 import {EditableSpan} from "./EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {Button, Checkbox, IconButton} from "@material-ui/core";
+import {FilterValuesType} from "../bll/todolists-reducer";
+import {TaskType} from "../bll/tasks-reducer";
 
 // Types
 type PropsType = {
@@ -11,13 +12,13 @@ type PropsType = {
     title: string
     filter: FilterValuesType
     tasks: Array<TaskType>
-    addTask: (todolistID: string, title: string) => void
-    removeTask: (todolistID: string, taskID: string) => void
-    changeFilter: (todolistID: string, filterValue: FilterValuesType) => void
-    changeTaskStatus: (todolistID: string, taskID: string, isDone: boolean) => void
-    removeTodolist: (todolistID: string) => void
-    changeTaskTitle: (taskID: string, title: string, todolistID: string) => void
-    changeTodoListTitle: (title: string, todoListID: string) => void
+    addTask: (todolistId: string, title: string) => void
+    removeTask: (taskId: string, todolistId: string) => void
+    changeFilter: (todolistId: string, filterValue: FilterValuesType) => void
+    changeTaskStatus: (taskId: string, isDone: boolean, todolistId: string) => void
+    removeTodolist: (todolistId: string) => void
+    changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
+    changeTodoListTitle: (title: string, todolistId: string) => void
 }
 
 // Component
@@ -25,7 +26,7 @@ function TodoList(props: PropsType) {
 
     // Functions
     const addTask = (title: string) => {
-        props.addTask(props.id, title)
+        props.addTask( title, props.id)
     }
 
     const filterAll = () => {
@@ -64,10 +65,10 @@ function TodoList(props: PropsType) {
                 {
                     props.tasks.map(task => {
                         const removeTask = () => {
-                            props.removeTask(props.id, task.id)
+                            props.removeTask(task.id, props.id)
                         }
                         const changeStatus = (e: ChangeEvent<HTMLInputElement>) => {
-                            props.changeTaskStatus(props.id, task.id, e.currentTarget.checked)
+                            props.changeTaskStatus(task.id, e.currentTarget.checked, props.id)
                         }
                         const changeTitle = (title: string) => {
                             props.changeTaskTitle(task.id, title, props.id)
