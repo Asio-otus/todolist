@@ -22,7 +22,7 @@ type PropsType = {
 }
 
 // Component
-function TodoList(props: PropsType) {
+export const TodoList = React.memo((props: PropsType) => {
 
     // Functions
     const addTask = (title: string) => {
@@ -49,6 +49,15 @@ function TodoList(props: PropsType) {
         props.changeTodoListTitle(title, props.id)
     }
 
+    let tasksForTodoList = props.tasks;
+    if (props.filter === "active") {
+        tasksForTodoList = props.tasks.filter(t => !t.isDone)
+    }
+    if (props.filter === "completed") {
+        tasksForTodoList = props.tasks.filter(t => t.isDone)
+    }
+
+
     // Render
     return (
         <div>
@@ -63,7 +72,7 @@ function TodoList(props: PropsType) {
             {/*Tasks*/}
             <ul style={{listStyle: 'none' , padding: '0'}}>
                 {
-                    props.tasks.map(task => {
+                    tasksForTodoList.map(task => {
                         const removeTask = () => {
                             props.removeTask(task.id, props.id)
                         }
@@ -115,6 +124,4 @@ function TodoList(props: PropsType) {
             </div>
         </div>
     );
-}
-
-export default TodoList;
+})

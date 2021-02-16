@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppWithUseState.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bll/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithUseState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithUseState.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/todolist-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-tasks-reducer.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +152,10 @@
       <workItem from="1612859819782" duration="671000" />
       <workItem from="1612861692906" duration="8195000" />
       <workItem from="1612877301505" duration="9318000" />
-      <workItem from="1612887212367" duration="5726000" />
+      <workItem from="1612887212367" duration="5844000" />
+      <workItem from="1613132384629" duration="2382000" />
+      <workItem from="1613501727471" duration="4664000" />
+      <workItem from="1613507013039" duration="2049000" />
     </task>
     <servers />
   </component>
