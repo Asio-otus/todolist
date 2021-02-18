@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppWithUseState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithUseState.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/archive/AppWithReducers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppWithUseState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/archive/AppWithUseState.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +51,7 @@
       <recent name="D:\Web\todolist\src\state" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Web\todolist\src\archive" />
       <recent name="D:\web\todolist\src\components\EditableSpan" />
       <recent name="D:\web\todolist\src\components" />
       <recent name="D:\web\todolist\src\AddItemForm" />
@@ -155,7 +159,8 @@
       <workItem from="1612887212367" duration="5844000" />
       <workItem from="1613132384629" duration="2382000" />
       <workItem from="1613501727471" duration="4664000" />
-      <workItem from="1613507013039" duration="2049000" />
+      <workItem from="1613507013039" duration="2821000" />
+      <workItem from="1613667919003" duration="7685000" />
     </task>
     <servers />
   </component>

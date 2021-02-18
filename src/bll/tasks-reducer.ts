@@ -80,6 +80,7 @@ export function tasksReducer(state: TasksStateType = initialState, action: Actio
                 [action.todolistId]: state[action.todolistId].map(task => task.id !== action.taskId
                     ? task
                     : {...task, isDone: action.isDone})
+
             }
         case 'CHANGE_TASK_TITLE':
             return {
