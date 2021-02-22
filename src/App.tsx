@@ -18,7 +18,7 @@ import {
 } from "./bll/tasks-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootState} from "./bll/store";
-import {TodoList} from "./components/TodoList";
+import {ToDoList} from "./components/ToDoList/ToDoList";
 
 // Component
 export function App() {
@@ -90,7 +90,7 @@ export function App() {
                             return (
                                 <Grid item key={tl.id}>
                                     <Paper elevation={10} style={{padding: '20px'}}>
-                                        <TodoList
+                                        <ToDoList
                                             id={tl.id}
                                             title={tl.title}
                                             filter={tl.filter}
