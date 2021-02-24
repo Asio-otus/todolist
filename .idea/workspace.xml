@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Task/Task.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/storybook/ReduxStoreProviderDecorator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/app.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration/setupTests.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TodoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storybook/ReduxStoreProviderDecorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/storybook/ReduxStoreProviderDecorator.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +55,11 @@
       <recent name="D:\Web\todolist\src\state" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Web\todolist\integration" />
       <recent name="D:\Web\todolist\src\components\ToDoList" />
       <recent name="D:\Web\todolist\src\components\Task" />
       <recent name="D:\Web\todolist\src\archive" />
       <recent name="D:\web\todolist\src\components\EditableSpan" />
-      <recent name="D:\web\todolist\src\components" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.ids should be equals">
@@ -87,19 +89,6 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="correct todolist should be removed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" />
-      <test-names>
-        <test-name value="correct todolist should be removed" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <configuration name="ids should be equals" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -123,13 +112,23 @@
       <test-file value="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" />
       <method v="2" />
     </configuration>
+    <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="storybook" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.storybook" />
         <item itemvalue="Jest.ids should be equals" />
         <item itemvalue="Jest.correct task should be added to correct array" />
         <item itemvalue="Jest.correct task should be deleted from correct array" />
         <item itemvalue="Jest.tasks-reducer.test.ts" />
-        <item itemvalue="Jest.correct todolist should be removed" />
       </list>
     </recent_temporary>
   </component>
@@ -166,6 +165,8 @@
       <workItem from="1613667919003" duration="8480000" />
       <workItem from="1613929797906" duration="3644000" />
       <workItem from="1613980649509" duration="5985000" />
+      <workItem from="1614180896412" duration="304000" />
+      <workItem from="1614181218079" duration="9628000" />
     </task>
     <servers />
   </component>

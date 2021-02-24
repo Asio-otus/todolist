@@ -1,14 +1,13 @@
-import {AddItemForm} from "./AddItemForm";
+import {AddItemForm, AddItemFormPropsType} from "./AddItemForm";
 import React from "react";
-import {action} from "@storybook/addon-actions";
+import {Meta, Story} from "@storybook/react/types-6-0";
 
 export default {
-    title: 'AddItemForm Component',
+    title: 'Todolist/AddItemForm',
     component: AddItemForm
-}
+} as Meta
 
-const callback = action('Add button was pressed inside a form')
+const Template: Story<AddItemFormPropsType> = (args) => <AddItemForm {...args}/>
 
-export const AddItemFormBaseExample = () => {
-     return <AddItemForm addItem={callback}/>
-}
+export const AddItemFormExample = Template.bind({})
+AddItemFormExample.args = {}

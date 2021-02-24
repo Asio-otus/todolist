@@ -4,7 +4,7 @@ import {EditableSpan} from "../EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {TaskType} from "../../bll/tasks-reducer";
 
-type TaskPropsType = {
+export type TaskPropsType = {
     task: TaskType
     toDoListId: string
     changeTaskStatus: (taskId: string, isDone: boolean, todolistId: string) => void

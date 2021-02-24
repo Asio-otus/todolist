@@ -1,16 +1,25 @@
 import React from "react";
 import {action} from "@storybook/addon-actions";
-import {EditableSpan} from "./EditableSpan";
+import {EditableSpan, EditableSpanPropsType} from "./EditableSpan";
+import {Meta, Story} from "@storybook/react/types-6-0";
 
 export default {
-    title: 'EditableSpan Component',
-    component: EditableSpan
-}
+    title: 'Todolist/EditableSpan',
+    component: EditableSpan,
+    argTypes: {
+        changeTitle: {
+            description: 'Value EditableSpan changed'
+        },
+        title: {
+            defaultValue: 'HTML',
+            description: 'Start value EditableSpan'
+        }
+    },
+} as Meta
 
-const changeTitleCallback = action('Title changed')
+const Template: Story<EditableSpanPropsType> = (args) => <EditableSpan {...args}/>
 
-export const EditableSpanBaseExample = () => {
-    return <>
-        <EditableSpan title={'Title'} changeTitle={changeTitleCallback}/>
-    </>
+export const EditableSpanExample = Template.bind({})
+EditableSpanExample.args = {
+    changeTitle: action('Value EditableSpan changed'),
 }
