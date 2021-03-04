@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/api/todolist-api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/todolist-api.stories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integration/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/integration/jest.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +158,9 @@
       <workItem from="1613980649509" duration="5985000" />
       <workItem from="1614180896412" duration="304000" />
       <workItem from="1614181218079" duration="10181000" />
+      <workItem from="1614797092107" duration="905000" />
+      <workItem from="1614799040042" duration="784000" />
+      <workItem from="1614868843190" duration="12308000" />
     </task>
     <servers />
   </component>
