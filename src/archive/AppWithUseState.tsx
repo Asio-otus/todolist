@@ -13,7 +13,7 @@
 //     isDone: boolean;
 // }
 //
-// export type TodolistType = {
+// export type ToDoListType = {
 //     id: string
 //     title: string
 //     filter: FilterValuesType
@@ -32,7 +32,7 @@
 //     const todoListID1 = v1()
 //     const todoListID2 = v1()
 //
-//     const [todoLists, setTodoLists] = useState<Array<TodolistType>>([
+//     const [todoLists, setTodoLists] = useState<Array<ToDoListType>>([
 //         {id: todoListID1, title: 'What to learn', filter: 'all'},
 //         {id: todoListID2, title: 'What to buy', filter: 'all'}
 //     ])
@@ -85,7 +85,7 @@
 //
 //     function addTodoList(title: string) {
 //         const newTodoListID = v1()
-//         const newTodoList: TodolistType = {
+//         const newTodoList: ToDoListType = {
 //             id: newTodoListID,
 //             title: title,
 //             filter: 'all'

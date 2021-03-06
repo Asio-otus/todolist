@@ -21,7 +21,7 @@
 //     isDone: boolean;
 // }
 //
-// export type TodolistType = {
+// export type ToDoListType = {
 //     id: string
 //     title: string
 //     filter: FilterValuesType

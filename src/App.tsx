@@ -7,7 +7,7 @@ import {
     addTodolistAC,
     changeTodolistFilterAC,
     changeTodolistTitleAC, FilterValuesType,
-    removeTodoListAC, TodolistType
+    removeTodoListAC, ToDoListDomainType
 } from "./bll/todolists-reducer";
 import {
     addTaskAC,
@@ -25,7 +25,7 @@ export function App() {
     console.log('App is called')
 
     const dispatch = useDispatch()
-    const todolists = useSelector<AppRootState, Array<TodolistType>>(state => state.todolists)
+    const todolists = useSelector<AppRootState, Array<ToDoListDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootState, TasksStateType>(state => state.tasks)
 
     // Functions
