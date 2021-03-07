@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import './App.css';
 import {AddItemForm} from "./components/AddItemForm/AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
@@ -6,7 +6,7 @@ import {Menu} from "@material-ui/icons";
 import {
     addTodolistAC,
     changeTodolistFilterAC,
-    changeTodolistTitleAC, FilterValuesType,
+    changeTodolistTitleAC, fetchToDoListsThunk, FilterValuesType,
     removeTodoListAC, ToDoListDomainType
 } from "./bll/todolists-reducer";
 import {
@@ -28,6 +28,10 @@ export function App() {
     const dispatch = useDispatch()
     const todolists = useSelector<AppRootStateType, Array<ToDoListDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
+
+    useEffect(() => {
+        dispatch(fetchToDoListsThunk)
+    }, [])
 
     // Functions
     const addTask = useCallback((title: string, todolistId: string) => {
