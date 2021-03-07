@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/todolist-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolist-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archive/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/archive/AppWithReducers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archive/AppWithUseState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/archive/AppWithUseState.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storybook/ReduxStoreProviderDecorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/storybook/ReduxStoreProviderDecorator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storybook/stories/todolist-api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolist-api.stories.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,11 +48,11 @@
       <recent name="D:\Web\todolist\src\state" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Web\todolist\src\api" />
       <recent name="D:\Web\todolist\src\storybook" />
       <recent name="D:\Web\todolist\integration" />
       <recent name="D:\Web\todolist\src\components\ToDoList" />
       <recent name="D:\Web\todolist\src\components\Task" />
-      <recent name="D:\Web\todolist\src\archive" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.tasks-reducer.test.ts">
@@ -180,7 +168,7 @@
       <workItem from="1614868843190" duration="12308000" />
       <workItem from="1615022883487" duration="2621000" />
       <workItem from="1615107434212" duration="800000" />
-      <workItem from="1615116454599" duration="7221000" />
+      <workItem from="1615116454599" duration="15913000" />
     </task>
     <servers />
   </component>
