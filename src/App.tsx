@@ -17,24 +17,25 @@ import {
     TasksStateType
 } from "./bll/tasks-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootState} from "./bll/store";
+import {AppRootStateType} from "./bll/store";
 import {ToDoList} from "./components/ToDoList/ToDoList";
+import {TaskStatuses} from "./api/todolist-api";
 
 // Component
 export function App() {
     console.log('App is called')
 
     const dispatch = useDispatch()
-    const todolists = useSelector<AppRootState, Array<ToDoListDomainType>>(state => state.todolists)
-    const tasks = useSelector<AppRootState, TasksStateType>(state => state.tasks)
+    const todolists = useSelector<AppRootStateType, Array<ToDoListDomainType>>(state => state.todolists)
+    const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 
     // Functions
     const addTask = useCallback((title: string, todolistId: string) => {
         dispatch(addTaskAC(title, todolistId))
     }, [dispatch])
 
-    const changeTaskStatus = useCallback((taskId: string, isDone: boolean, todolistId: string,) => {
-        dispatch(changeTaskStatusAC(taskId, isDone, todolistId))
+    const changeTaskStatus = useCallback((taskId: string, status: TaskStatuses, todolistId: string,) => {
+        dispatch(changeTaskStatusAC(taskId, status, todolistId))
     }, [dispatch])
 
     const removeTask = useCallback((taskId: string, todolistId: string) => {

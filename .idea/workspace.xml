@@ -7,10 +7,16 @@
       <change beforePath="$PROJECT_DIR$/src/api/todolist-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolist-api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/archive/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/archive/AppWithReducers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/archive/AppWithUseState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/archive/AppWithUseState.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/todolist-api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/storybook/stories/todolist-api.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storybook/ReduxStoreProviderDecorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/storybook/ReduxStoreProviderDecorator.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,17 +67,17 @@
       <recent name="D:\Web\todolist\src\archive" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.ids should be equals">
-    <configuration name="correct task should be added to correct array" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.tasks-reducer.test.ts">
+    <configuration name="chosen todolist should change its title" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" />
+      <test-file value="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" />
       <test-names>
-        <test-name value="correct task should be added to correct array" />
+        <test-name value="chosen todolist should change its title" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -88,16 +94,29 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="ids should be equals" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="correct todolist should be added" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/bll/todolists-tasks-reducer.test.ts" />
+      <test-file value="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" />
       <test-names>
-        <test-name value="ids should be equals" />
+        <test-name value="correct todolist should be added" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="correct todolist should be removed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" />
+      <test-names>
+        <test-name value="correct todolist should be removed" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -111,23 +130,13 @@
       <test-file value="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" />
       <method v="2" />
     </configuration>
-    <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="storybook" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.storybook" />
-        <item itemvalue="Jest.ids should be equals" />
-        <item itemvalue="Jest.correct task should be added to correct array" />
-        <item itemvalue="Jest.correct task should be deleted from correct array" />
         <item itemvalue="Jest.tasks-reducer.test.ts" />
+        <item itemvalue="Jest.correct task should be deleted from correct array" />
+        <item itemvalue="Jest.correct todolist should be removed" />
+        <item itemvalue="Jest.correct todolist should be added" />
+        <item itemvalue="Jest.chosen todolist should change its title" />
       </list>
     </recent_temporary>
   </component>
@@ -170,6 +179,8 @@
       <workItem from="1614799040042" duration="784000" />
       <workItem from="1614868843190" duration="12308000" />
       <workItem from="1615022883487" duration="2621000" />
+      <workItem from="1615107434212" duration="800000" />
+      <workItem from="1615116454599" duration="7221000" />
     </task>
     <servers />
   </component>

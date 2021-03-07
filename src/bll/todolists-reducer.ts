@@ -36,9 +36,6 @@ export type ActionType =
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
-export let todoListID1 = v1()
-export let todoListID2 = v1()
-
 const initialState: Array<ToDoListDomainType> = []
 
 export function todolistsReducer(state: Array<ToDoListDomainType> = initialState, action: ActionType): Array<ToDoListDomainType> {

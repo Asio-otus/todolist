@@ -10,7 +10,7 @@
 // export type TaskType = {
 //     id: string;
 //     title: string;
-//     isDone: boolean;
+//     status: TaskStatuses;
 // }
 //
 // export type ToDoListType = {
@@ -63,7 +63,7 @@
 //         setTasks({...tasks});
 //     }
 //
-//     function changeTaskStatus(taskId: string, isDone: boolean, todolistId: string) {
+//     function changeTaskStatus(taskId: string, status: TaskStatuses, todolistId: string) {
 //         const todolistTasks = tasks[todolistId]
 //         let task = todolistTasks.find(t => t.id === taskId)
 //         if (task) {

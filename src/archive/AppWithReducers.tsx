@@ -18,7 +18,7 @@
 // export type TaskType = {
 //     id: string;
 //     title: string;
-//     isDone: boolean;
+//     status: TaskStatuses;
 // }
 //
 // export type ToDoListType = {
@@ -65,7 +65,7 @@
 //         dispatchTasks(addTaskAC(title, todolistId))
 //     }
 //
-//     function changeTaskStatus(taskId: string, isDone: boolean, todolistId: string, ) {
+//     function changeTaskStatus(taskId: string, status: TaskStatuses, todolistId: string, ) {
 //         dispatchTasks(changeTaskStatusAC(taskId, isDone, todolistId))
 //     }
 //
