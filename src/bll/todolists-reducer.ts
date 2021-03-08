@@ -39,8 +39,8 @@ export type ToDoListDomainType = ToDoListType & {
 }
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
-////////////////////////// TYPES - END //////////////////////
 
+// Reducer
 const initialState: Array<ToDoListDomainType> = []
 
 export function todolistsReducer(state: Array<ToDoListDomainType> = initialState, action: ActionType): Array<ToDoListDomainType> {
@@ -67,12 +67,12 @@ export function todolistsReducer(state: Array<ToDoListDomainType> = initialState
                 }
             })
         }
-
         default:
             return state
     }
 }
 
+// Action creators
 export const removeTodoListAC = (todolistId: string): RemoveTodoListActionType => {
     return {type: 'REMOVE-TODOLIST', todolistId}
 }

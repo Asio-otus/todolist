@@ -26,9 +26,12 @@ type PropsType = {
 
 // Component
 export const ToDoList = React.memo((props: PropsType) => {
+    console.log('to do list called')
 
+    // Connect
     const dispatch = useDispatch()
 
+    // Side effects
      useEffect(() => {
          dispatch(fetchTasksTC(props.id))
      }, [])
@@ -36,27 +39,27 @@ export const ToDoList = React.memo((props: PropsType) => {
     // Callbacks
     const addTask = useCallback((title: string) => {
         props.addTask(title, props.id)
-    }, [props.addTask, props.id])
+    }, [])
 
     const removeTodolist = useCallback(() => {
         props.removeTodolist(props.id)
-    }, [props.removeTodolist, props.id])
+    }, [])
 
     const changeTodolistTitle = useCallback((title: string) => {
         props.changeTodoListTitle(title, props.id)
-    }, [props.changeTodoListTitle, props.id])
+    }, [])
 
     const filterAll = useCallback(() => {
         props.changeFilter(props.id, 'all')
-    }, [props.changeFilter, props.id])
+    }, [])
 
     const filterActive = useCallback(() => {
         props.changeFilter(props.id, 'active')
-    }, [props.changeFilter, props.id])
+    }, [])
 
     const filterCompleted = useCallback(() => {
         props.changeFilter(props.id, 'completed')
-    }, [props.changeFilter, props.id])
+    }, [])
 
     // Component logic
     let tasksForTodoList = props.tasks;

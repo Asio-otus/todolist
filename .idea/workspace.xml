@@ -7,6 +7,9 @@
       <change beforePath="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/tasks-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/todolists-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +64,7 @@
       <recent name="D:\Web\todolist\src\components\Task" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.tasks should be added to &quot;To do list&quot;">
+  <component name="RunManager" selected="Jest.correct task should be added to correct array">
     <configuration name="correct filter of todolist should be changed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -75,7 +78,7 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="correct task should be deleted from correct array" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="correct task should be added to correct array" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -84,7 +87,7 @@
       <scope-kind value="TEST" />
       <test-file value="$PROJECT_DIR$/src/bll/tasks-reducer.test.ts" />
       <test-names>
-        <test-name value="correct task should be deleted from correct array" />
+        <test-name value="correct task should be added to correct array" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -126,11 +129,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.correct task should be added to correct array" />
         <item itemvalue="Jest.tasks should be added to &quot;To do list&quot;" />
         <item itemvalue="Jest.empty arrays should be added when we set todolists" />
         <item itemvalue="Jest.correct filter of todolist should be changed" />
         <item itemvalue="Jest.tasks-reducer.test.ts" />
-        <item itemvalue="Jest.correct task should be deleted from correct array" />
       </list>
     </recent_temporary>
   </component>
@@ -175,7 +178,7 @@
       <workItem from="1615022883487" duration="2621000" />
       <workItem from="1615107434212" duration="800000" />
       <workItem from="1615116454599" duration="22871000" />
-      <workItem from="1615217216674" duration="3939000" />
+      <workItem from="1615217216674" duration="10167000" />
     </task>
     <servers />
   </component>

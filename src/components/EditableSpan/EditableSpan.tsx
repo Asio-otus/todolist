@@ -6,13 +6,14 @@ export type EditableSpanPropsType = {
     changeTitle: (title: string) => void
 }
 
+// Component
 export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
 
-    console.log('EditableSpan is called')
-
+    // Local state
     const [editMode, setEditMode] = useState<boolean>(false)
     const [title, setTitle] = useState<string>(props.title)
 
+    // Local functions
     const onEditMode = () => setEditMode(true)
     const offEditMode = () => {
         setEditMode(false)

@@ -1,18 +1,19 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-import {IconButton, TextField} from "@material-ui/core";
 import {AddBox} from "@material-ui/icons";
+import {IconButton, TextField} from "@material-ui/core";
 
 export type AddItemFormPropsType = {
     addItem: (title: string) => void
 }
 
+// Component
 export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
 
-    console.log("AddItemForm is called")
-
+    // Local state
     const [title, setTitle] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
 
+    // Local functions
     const addItem = () => {
         const itemTitle = title.trim()
         if (itemTitle) {

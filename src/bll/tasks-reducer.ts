@@ -1,12 +1,11 @@
 import {AddTodoListActionType, RemoveTodoListActionType, SetToDoListsActionType} from "./todolists-reducer";
-import {v1} from "uuid";
-import {TaskPriorities, TaskStatuses, TaskType, todolistAPI} from "../api/todolist-api";
+import {TaskStatuses, TaskType, todolistAPI} from "../api/todolist-api";
 import {Dispatch} from "redux";
 
 export type AddTaskActionType = {
     type: 'ADD_TASK'
-    toDoListId: string
     title: string
+    newTask: TaskType
 }
 
 export type RemoveTaskActionType = {
@@ -48,28 +47,16 @@ export type ActionType = | AddTaskActionType
 export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
-////////////////////////// TYPES - END //////////////////////
 
+// Reducer
 const initialState: TasksStateType = {}
 
 export function tasksReducer(state: TasksStateType = initialState, action: ActionType): TasksStateType {
     switch (action.type) {
         case 'ADD_TASK': {
-            let newTask: TaskType = {
-                description: '',
-                title: action.title,
-                status: TaskStatuses.New,
-                priority: TaskPriorities.low,
-                startDate: '',
-                deadline: '',
-                id: v1(),
-                todoListId: action.toDoListId,
-                order: 0,
-                addedDate: ''
-            }
             return {
                 ...state,
-                [action.toDoListId]: [newTask, ...state[action.toDoListId]]
+                [action.newTask.todoListId]: [action.newTask, ...state[action.newTask.todoListId]]
             }
         }
         case 'REMOVE_TASK':
@@ -119,8 +106,9 @@ export function tasksReducer(state: TasksStateType = initialState, action: Actio
     }
 }
 
-export const addTaskAC = (title: string, toDoListId: string): AddTaskActionType => {
-    return {type: 'ADD_TASK', title, toDoListId}
+// Action creators
+export const addTaskAC = (title: string, newTask: TaskType): AddTaskActionType => {
+    return {type: 'ADD_TASK', title, newTask}
 }
 
 export const removeTaskAC = (taskId: string, toDoListId: string): RemoveTaskActionType => {
@@ -143,8 +131,26 @@ export const setTasksAc = (tasks: Array<TaskType>, toDoListId: string): SetTasks
 export const fetchTasksTC = (toDoListId: string) => {
     return (dispatch: Dispatch) => {
         todolistAPI.getTasks(toDoListId)
-            .then ((res) => {
+            .then((res) => {
                 dispatch(setTasksAc(res.data.items, toDoListId))
+            })
+    }
+}
+
+export const addTaskTC = (title: string, toDoListId: string) => {
+    return (dispatch: Dispatch) => {
+        todolistAPI.createTask(toDoListId, title)
+            .then ((res) => {
+                dispatch(addTaskAC(title, res.data.data.item))
+            })
+    }
+}
+
+export const deleteTaskTC = (taskId: string, toDoListId: string) => {
+    return (dispatch: Dispatch) => {
+        todolistAPI.deleteTask(toDoListId, taskId)
+            .then (() => {
+                dispatch(removeTaskAC(taskId, toDoListId))
             })
     }
 }
