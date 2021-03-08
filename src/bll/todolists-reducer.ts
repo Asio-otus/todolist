@@ -93,11 +93,12 @@ export const setToDoListsAC = (todoLists: Array<ToDoListType>): SetToDoListsActi
     return {type: 'SET-TODOLISTS', todoLists}
 }
 
-// Thunks
-export const fetchToDoListsThunk = (dispatch: Dispatch) => {
-    todolistAPI.getTodolists()
-        .then((res) => {
-            dispatch(setToDoListsAC(res.data))
-        })
+// Thunk creators
+export const fetchToDoListsTC = () => {
+    return (dispatch: Dispatch) => {
+        todolistAPI.getTodolists()
+            .then((res) => {
+                dispatch(setToDoListsAC(res.data))
+            })
+    }
 }
-

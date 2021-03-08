@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {AddItemForm} from "../AddItemForm/AddItemForm";
 import {EditableSpan} from "../EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
@@ -6,6 +6,8 @@ import {Button, IconButton} from "@material-ui/core";
 import {FilterValuesType} from "../../bll/todolists-reducer";
 import {Task} from "../Task/Task";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
+import {useDispatch} from "react-redux";
+import {fetchTasksTC} from "../../bll/tasks-reducer";
 
 // Types
 type PropsType = {
@@ -25,7 +27,11 @@ type PropsType = {
 // Component
 export const ToDoList = React.memo((props: PropsType) => {
 
-    console.log('TodoList is called')
+    const dispatch = useDispatch()
+
+     useEffect(() => {
+         dispatch(fetchTasksTC(props.id))
+     }, [])
 
     // Callbacks
     const addTask = useCallback((title: string) => {
@@ -41,23 +47,23 @@ export const ToDoList = React.memo((props: PropsType) => {
     }, [props.changeTodoListTitle, props.id])
 
     const filterAll = useCallback(() => {
-        props.changeFilter(props.id, "all")
+        props.changeFilter(props.id, 'all')
     }, [props.changeFilter, props.id])
 
     const filterActive = useCallback(() => {
-        props.changeFilter(props.id, "active")
+        props.changeFilter(props.id, 'active')
     }, [props.changeFilter, props.id])
 
     const filterCompleted = useCallback(() => {
-        props.changeFilter(props.id, "completed")
+        props.changeFilter(props.id, 'completed')
     }, [props.changeFilter, props.id])
 
     // Component logic
     let tasksForTodoList = props.tasks;
-    if (props.filter === "active") {
+    if (props.filter === 'active') {
         tasksForTodoList = props.tasks.filter(t => t.status === TaskStatuses.New)
     }
-    if (props.filter === "completed") {
+    if (props.filter === 'completed') {
         tasksForTodoList = props.tasks.filter(t => t.status === TaskStatuses.Completed)
     }
 
@@ -89,20 +95,20 @@ export const ToDoList = React.memo((props: PropsType) => {
                     style={{marginRight: '5px'}}
                     size={'small'}
                     color={'primary'}
-                    variant={props.filter === "all" ? 'contained' : 'outlined'}
+                    variant={props.filter === 'all' ? 'contained' : 'outlined'}
                     onClick={filterAll}>All
                 </Button>
                 <Button
                     style={{marginRight: '5px'}}
                     size={'small'}
                     color={'primary'}
-                    variant={props.filter === "active" ? 'contained' : 'outlined'}
+                    variant={props.filter === 'active' ? 'contained' : 'outlined'}
                     onClick={filterActive}>Active
                 </Button>
                 <Button
                     size={'small'}
                     color={'primary'}
-                    variant={props.filter === "completed" ? 'contained' : 'outlined'}
+                    variant={props.filter === 'completed' ? 'contained' : 'outlined'}
                     onClick={filterCompleted}>Completed
                 </Button>
             </div>
