@@ -35,7 +35,7 @@ export type TaskType = {
     addedDate: string
 }
 
-type UpdateTaskModelType = {
+export type UpdateTaskModelType = {
     title: string
     description: string
     status: TaskStatuses
@@ -56,6 +56,7 @@ type ResponseTasksType = {
     items: Array<TaskType>
 }
 
+// Instance of axios
 const instance = axios.create ({
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
     withCredentials: true,
@@ -64,6 +65,7 @@ const instance = axios.create ({
     }
 })
 
+// API
 export const todolistAPI = {
     getTodolists() {
         return instance.get<Array<ToDoListType>>('todo-lists')
