@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from 'react';
-import {AddItemForm} from "../AddItemForm/AddItemForm";
-import {EditableSpan} from "../EditableSpan/EditableSpan";
+import {AddItemForm} from "../_common/AddItemForm/AddItemForm";
+import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {Button, IconButton} from "@material-ui/core";
 import {FilterValuesType} from "../../bll/todolists-reducer";
@@ -8,6 +8,7 @@ import {Task} from "../Task/Task";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
 import {useDispatch} from "react-redux";
 import {fetchTasksTC} from "../../bll/tasks-reducer";
+import styled from "styled-components";
 
 // Types
 type PropsType = {
@@ -32,9 +33,9 @@ export const ToDoList = React.memo((props: PropsType) => {
     const dispatch = useDispatch()
 
     // Side effects
-     useEffect(() => {
-         dispatch(fetchTasksTC(props.id))
-     }, [])
+    useEffect(() => {
+        dispatch(fetchTasksTC(props.id))
+    }, [])
 
     // Callbacks
     const addTask = useCallback((title: string) => {
@@ -72,7 +73,7 @@ export const ToDoList = React.memo((props: PropsType) => {
 
     // Render
     return (
-        <div>
+        <ToDoListCard>
             <h3>
                 <EditableSpan title={props.title} changeTitle={changeTodolistTitle}/>
                 <IconButton onClick={removeTodolist}>
@@ -80,9 +81,9 @@ export const ToDoList = React.memo((props: PropsType) => {
                 </IconButton>
             </h3>
             {/*Add new task input*/}
-            <AddItemForm addItem={addTask}/>
+            <AddItemForm addItem={addTask} label={'New task'}/>
             {/*Tasks*/}
-            <div style={{listStyle: 'none', padding: '0'}}>
+            <div>
                 {
                     tasksForTodoList.map(task => <Task key={task.id}
                                                        task={task}
@@ -93,28 +94,49 @@ export const ToDoList = React.memo((props: PropsType) => {
                 }
             </div>
             {/*Filter buttons*/}
-            <div>
-                <Button
-                    style={{marginRight: '5px'}}
-                    size={'small'}
+            <ButtonWrapper>
+                <StyledButton
                     color={'primary'}
                     variant={props.filter === 'all' ? 'contained' : 'outlined'}
                     onClick={filterAll}>All
-                </Button>
-                <Button
-                    style={{marginRight: '5px'}}
-                    size={'small'}
+                </StyledButton>
+                <StyledButton
                     color={'primary'}
                     variant={props.filter === 'active' ? 'contained' : 'outlined'}
                     onClick={filterActive}>Active
-                </Button>
-                <Button
-                    size={'small'}
+                </StyledButton>
+                <StyledButton
                     color={'primary'}
                     variant={props.filter === 'completed' ? 'contained' : 'outlined'}
                     onClick={filterCompleted}>Completed
-                </Button>
-            </div>
-        </div>
+                </StyledButton>
+            </ButtonWrapper>
+        </ToDoListCard>
     );
 })
+
+// Styles
+const ToDoListCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  margin-left: 25px;
+  margin-bottom: 25px;
+  padding: 30px;
+  
+  width: 400px;
+  height: 100%;
+  
+  background-color: ${({theme}) => theme.color.lightGray};
+  box-shadow: ${({theme}) => theme.effect.shadow};
+  border-radius: ${({theme}) => theme.border.size.md};
+`
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  justify-self: end;
+`
+
+const StyledButton = styled(Button)`
+    padding: 5px 25px;
+`

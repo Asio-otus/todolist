@@ -1,8 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import './App.css';
-import {AddItemForm} from "./components/AddItemForm/AddItemForm";
-import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
-import {Menu} from "@material-ui/icons";
+import {AddItemForm} from "./components/_common/AddItemForm/AddItemForm";
 import {
     addToDoListTC,
     changeTodolistFilterAC,
@@ -17,6 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./bll/store";
 import {ToDoList} from "./components/ToDoList/ToDoList";
 import {TaskStatuses} from "./api/todolist-api";
+import {Container} from "./components/_layout/Container";
 
 // Component
 export function App() {
@@ -67,53 +65,34 @@ export function App() {
 
     // Render
     return (
-        <div className='App'>
-            <AppBar position='static'>
-                <Toolbar>
-                    <IconButton edge='start' color='inherit' aria-label='menu'>
-                        <Menu/>
-                    </IconButton>
-                    <Typography variant='h6'>
-                        News
-                    </Typography>
-                    <Typography variant='h6'>
-                        About
-                    </Typography>
-                    <Button color='inherit'>Login</Button>
-                </Toolbar>
-            </AppBar>
-            <Container fixed>
-                <Grid container style={{paddingBottom: '50px'}}>
-                    <AddItemForm addItem={addTodoList}/>
-                </Grid>
-                <Grid container spacing={3}>
-                    {
-                        todolists.map(tl => {
+        <div>
 
-                            let tasksForTodoList = tasks[tl.id]
-                            return (
-                                <Grid item key={tl.id}>
-                                    <Paper elevation={10} style={{padding: '20px'}}>
-                                        <ToDoList
-                                            id={tl.id}
-                                            title={tl.title}
-                                            filter={tl.filter}
-                                            tasks={tasksForTodoList}
-                                            removeTask={deleteTask}
-                                            addTask={addTask}
-                                            changeFilter={changeFilter}
-                                            changeTaskStatus={changeTaskStatus}
-                                            removeTodolist={deleteToDoList}
-                                            changeTaskTitle={changeTaskTitle}
-                                            changeTodoListTitle={changeTodoListTitle}
-                                        />
-                                    </Paper>
-                                </Grid>
-                            )
-                        })
-                    }
-                </Grid>
+            <div>
+                <AddItemForm addItem={addTodoList} label={'New to do list'}/>
+            </div>
+            <Container>
+                {
+                    todolists.map(tl => {
+                        let tasksForTodoList = tasks[tl.id]
+                        return (
+                            <ToDoList
+                                key={tl.id}
+                                id={tl.id}
+                                title={tl.title}
+                                filter={tl.filter}
+                                tasks={tasksForTodoList}
+                                removeTask={deleteTask}
+                                addTask={addTask}
+                                changeFilter={changeFilter}
+                                changeTaskStatus={changeTaskStatus}
+                                removeTodolist={deleteToDoList}
+                                changeTaskTitle={changeTaskTitle}
+                                changeTodoListTitle={changeTodoListTitle}
+                            />
+                        )
+                    })
+                }
             </Container>
         </div>
-    );
+    )
 }
