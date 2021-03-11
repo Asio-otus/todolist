@@ -74,39 +74,40 @@ export const ToDoList = React.memo((props: PropsType) => {
     // Render
     return (
         <ToDoListCard>
-            <h3>
-                <EditableSpan title={props.title} changeTitle={changeTodolistTitle}/>
-                <IconButton onClick={removeTodolist}>
+            <TitleWrapper>
+                <TaskTitle>
+                    <EditableSpan title={props.title} changeTitle={changeTodolistTitle}/>
+                </TaskTitle>
+                <IconButtonStyled onClick={removeTodolist}>
                     <Delete/>
-                </IconButton>
-            </h3>
+                </IconButtonStyled>
+            </TitleWrapper>
             {/*Add new task input*/}
-            <AddItemForm addItem={addTask} label={'New task'}/>
+            <AddTaskWrapper>
+                <AddItemForm addItem={addTask} label={'New task'} variant={'outlined'}/>
+            </AddTaskWrapper>
             {/*Tasks*/}
             <div>
                 {
-                    tasksForTodoList.map(task => <Task key={task.id}
-                                                       task={task}
-                                                       toDoListId={props.id}
-                                                       changeTaskStatus={props.changeTaskStatus}
-                                                       changeTaskTitle={props.changeTaskTitle}
-                                                       removeTask={props.removeTask}/>)
+                    tasksForTodoList.map(task => <TaskWrapper><Task key={task.id}
+                              task={task}
+                              toDoListId={props.id}
+                              changeTaskStatus={props.changeTaskStatus}
+                              changeTaskTitle={props.changeTaskTitle}
+                              removeTask={props.removeTask}/></TaskWrapper>)
                 }
             </div>
             {/*Filter buttons*/}
             <ButtonWrapper>
                 <StyledButton
-                    color={'primary'}
                     variant={props.filter === 'all' ? 'contained' : 'outlined'}
                     onClick={filterAll}>All
                 </StyledButton>
                 <StyledButton
-                    color={'primary'}
                     variant={props.filter === 'active' ? 'contained' : 'outlined'}
                     onClick={filterActive}>Active
                 </StyledButton>
                 <StyledButton
-                    color={'primary'}
                     variant={props.filter === 'completed' ? 'contained' : 'outlined'}
                     onClick={filterCompleted}>Completed
                 </StyledButton>
@@ -117,26 +118,75 @@ export const ToDoList = React.memo((props: PropsType) => {
 
 // Styles
 const ToDoListCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  
+  position: relative;
+
   margin-left: 25px;
   margin-bottom: 25px;
   padding: 30px;
-  
+
   width: 400px;
   height: 100%;
-  
+
   background-color: ${({theme}) => theme.color.lightGray};
   box-shadow: ${({theme}) => theme.effect.shadow};
   border-radius: ${({theme}) => theme.border.size.md};
 `
+
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+
+  margin-bottom: 20px;
+`
+
+const TaskTitle = styled.h3`
+  width: 80%;
+`
+
+const IconButtonStyled = styled(IconButton)`
+  position: absolute;
+  top: 15px;
+  right: 30px;
+`
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   justify-self: end;
 `
 
-const StyledButton = styled(Button)`
-    padding: 5px 25px;
+const StyledButton = styled(Button)<any>`
+  padding: 5px 25px;
+  box-shadow: ${({theme}) => theme.effect.shadow};
+  border: none;
+
+  &.MuiButton-label {
+    color: #fff;
+  }
+
+  &.MuiButton-outlined {
+    color: ${({theme}) => theme.color.secondary};
+    &:hover {
+      color: #fff;
+      background-color: ${({theme}) => theme.color.main};
+    }
+  }
+
+  &.MuiButton-contained {
+    color: #fff;
+    background-color: ${({theme}) => theme.color.main};
+    &:hover {
+      background-color: ${({theme}) => theme.color.mainDarker};
+    }
+  }
+`
+
+const AddTaskWrapper = styled.div`
+  margin-bottom: 20px;
+`
+
+const TaskWrapper = styled.div`
+  :last-child {
+    margin-bottom: 20px;
+  }
 `

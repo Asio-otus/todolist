@@ -17,10 +17,16 @@ export const theme = {
         }
     },
     color: {
-        lightGray: '#fafafa'
+        main: '#fd7029',
+        mainDarker: '#d96124',
+        secondary: '#2e2f65',
+        ternary: '#fdd459',
+        lightGray: '#fafafa',
+        error: '#c11616'
     },
     effect: {
-        shadow: '2px 2px 5px #cfcfcf'
+        shadow: '2px 2px 5px #cfcfcf',
+        redShadow: '2px 2px 5px #c11616'
     },
     border: {
         size: {

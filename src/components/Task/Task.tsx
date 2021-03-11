@@ -1,8 +1,9 @@
 import React, {ChangeEvent, useCallback} from "react";
 import {Checkbox, IconButton} from "@material-ui/core";
 import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
-import {Delete} from "@material-ui/icons";
+import {Delete, Style} from "@material-ui/icons";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
+import styled from "styled-components";
 
 export type TaskPropsType = {
     task: TaskType
@@ -30,16 +31,40 @@ export const Task = React.memo((props: TaskPropsType) => {
 
     // Render
     return (
-        <div key={props.task.id}
-             className={props.task.status === TaskStatuses.Completed ? "is-done" : ""}>
-            <Checkbox color={'primary'}
-                      checked={props.task.status === TaskStatuses.Completed}
-                      onChange={changeStatus}/>
-            <EditableSpan title={props.task.title}
-                          changeTitle={changeTitle}/>
-            <IconButton onClick={removeTask}>
+        <ComponentWrapper key={props.task.id}>
+            <StyledCheckbox
+                color={'primary'}
+                checked={props.task.status === TaskStatuses.Completed}
+                onChange={changeStatus}
+                taskStatus={props.task.status}/>
+                <StyledEditableSpan taskStatus={props.task.status}>
+                    <EditableSpan
+                        title={props.task.title}
+                        changeTitle={changeTitle}/>
+                </StyledEditableSpan>
+            <IconButtonStyled onClick={removeTask}>
                 <Delete/>
-            </IconButton>
-        </div>
+            </IconButtonStyled>
+        </ComponentWrapper>
     )
 })
+
+const StyledCheckbox = styled(Checkbox)<any>`
+  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
+`
+const StyledEditableSpan = styled.div<any>`
+  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
+`
+const ComponentWrapper = styled.div`
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+`
+
+const IconButtonStyled = styled(IconButton)`
+  position: absolute;
+  right: 0;
+`

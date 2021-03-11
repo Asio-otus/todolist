@@ -1,10 +1,11 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {AddBox} from "@material-ui/icons";
 import {IconButton, TextField} from "@material-ui/core";
+import {TextFieldProps} from "@material-ui/core/TextField/TextField";
+import styled from "styled-components";
 
-export type AddItemFormPropsType = {
+export type AddItemFormPropsType = TextFieldProps & {
     addItem: (title: string) => void
-    label: string
 }
 
 // Component
@@ -38,19 +39,51 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
     }
 
     return (
-        <div>
-            <TextField
+        <ComponentWrapper>
+            <TextFieldStyled
                 value={title}
                 onChange={onChangeHandler}
                 onKeyPress={onKeyPressHandler}
                 error={!!error}
                 helperText={error}
-                label={props.label}
-                multiline
+                fullWidth
+                {...props}
             />
-            <IconButton color={'primary'} onClick={addItem}>
+            <IconButtonStyled onClick={addItem}>
                 <AddBox/>
-            </IconButton>
-        </div>
+            </IconButtonStyled>
+        </ComponentWrapper>
     )
 })
+
+const ComponentWrapper = styled.div`
+  position: relative;
+  
+  display: flex;
+  align-items: center;
+  width: 100%;
+`
+
+const TextFieldStyled = styled(TextField)<any>`
+  & label.Mui-focused {
+    color: ${({theme}) => theme.color.main};
+  }
+  & .MuiOutlinedInput-root {
+    & fieldset {
+      border-color: ${({theme}) => theme.color.secondary};
+    }
+    &:hover fieldset {
+      border-color: ${({theme}) => theme.color.main};
+    }
+    &.Mui-focused fieldset {
+      border-color: ${({theme}) => theme.color.main};
+`
+
+const IconButtonStyled = styled(IconButton)<any>`
+  margin-left: 10px;
+  color: ${({theme}) => theme.color.main};
+`
+
+// Вучина и грибы
+// Хотдог
+// Техас

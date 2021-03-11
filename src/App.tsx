@@ -15,6 +15,7 @@ import {AppRootStateType} from "./bll/store";
 import {ToDoList} from "./components/ToDoList/ToDoList";
 import {TaskStatuses} from "./api/todolist-api";
 import {Container} from "./components/_layout/Container";
+import {SuperEditableSpan} from "./archive/EditableSpanMy/SuperEditableSpan";
 
 // Component
 export function App() {
