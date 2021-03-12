@@ -46,6 +46,7 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
                 onKeyPress={onKeyPressHandler}
                 error={!!error}
                 helperText={error}
+                variant={'outlined'}
                 fullWidth
                 {...props}
             />
@@ -65,25 +66,36 @@ const ComponentWrapper = styled.div`
 `
 
 const TextFieldStyled = styled(TextField)<any>`
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: ${({theme}) => theme.effect.shadow};
+  
   & label.Mui-focused {
     color: ${({theme}) => theme.color.main};
   }
   & .MuiOutlinedInput-root {
-    & fieldset {
-      border-color: ${({theme}) => theme.color.secondary};
-    }
+    
     &:hover fieldset {
       border-color: ${({theme}) => theme.color.main};
     }
+
     &.Mui-focused fieldset {
       border-color: ${({theme}) => theme.color.main};
+    }
+  }
+
+  & .MuiInput-underline:before {
+    &:hover {
+      border-bottom-color: ${({theme}) => theme.color.main};
+    }
+  }
+
+  & .MuiInput-underline:after {
+    border-bottom-color: ${({theme}) => theme.color.main};
+  }
 `
 
 const IconButtonStyled = styled(IconButton)<any>`
   margin-left: 10px;
   color: ${({theme}) => theme.color.main};
 `
-
-// Вучина и грибы
-// Хотдог
-// Техас

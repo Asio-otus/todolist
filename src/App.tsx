@@ -16,6 +16,7 @@ import {ToDoList} from "./components/ToDoList/ToDoList";
 import {TaskStatuses} from "./api/todolist-api";
 import {Container} from "./components/_layout/Container";
 import {SuperEditableSpan} from "./archive/EditableSpanMy/SuperEditableSpan";
+import styled from 'styled-components';
 
 // Component
 export function App() {
@@ -67,10 +68,11 @@ export function App() {
     // Render
     return (
         <div>
-
-            <div>
-                <AddItemForm addItem={addTodoList} label={'New to do list'}/>
-            </div>
+            <Header>
+                <ItemFormWrapper>
+                    <AddItemForm addItem={addTodoList} label={'Add to do list'}/>
+                </ItemFormWrapper>
+            </Header>
             <Container>
                 {
                     todolists.map(tl => {
@@ -97,3 +99,22 @@ export function App() {
         </div>
     )
 }
+
+const Header = styled.header`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin-bottom: 30px;
+  
+  height: 100px;
+  
+  background-color: ${({theme}) => theme.color.lightGray};
+  box-shadow: ${({theme}) => theme.effect.shadow};
+`
+
+const ItemFormWrapper = styled.div`
+  width: 30%;
+  min-width: 300px;
+`

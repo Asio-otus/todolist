@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/archive/EditableSpanMy/SuperEditableSpan.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/archive/EditableSpanMy/SvgPen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/archive/InputText/InputText.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/_common/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_common/AddItemForm/AddItemForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/theme.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +41,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="D:\Web\todolist\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -180,7 +174,8 @@
       <workItem from="1615377968859" duration="10854000" />
       <workItem from="1615405395374" duration="6117000" />
       <workItem from="1615455743618" duration="980000" />
-      <workItem from="1615457029321" duration="23020000" />
+      <workItem from="1615457029321" duration="23248000" />
+      <workItem from="1615484215751" duration="1919000" />
     </task>
     <servers />
   </component>
@@ -198,5 +193,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/react-tasks" />
+    </ignored-roots>
   </component>
 </project>

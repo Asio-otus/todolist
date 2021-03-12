@@ -18,7 +18,7 @@ export const theme = {
     },
     color: {
         main: '#fd7029',
-        mainDarker: '#d96124',
+        mainAlt: '#d44b05',
         secondary: '#2e2f65',
         ternary: '#fdd459',
         lightGray: '#fafafa',

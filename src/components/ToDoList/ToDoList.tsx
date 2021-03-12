@@ -84,7 +84,7 @@ export const ToDoList = React.memo((props: PropsType) => {
             </TitleWrapper>
             {/*Add new task input*/}
             <AddTaskWrapper>
-                <AddItemForm addItem={addTask} label={'New task'} variant={'outlined'}/>
+                <AddItemForm addItem={addTask} label={'Add task'}/>
             </AddTaskWrapper>
             {/*Tasks*/}
             <div>
@@ -176,7 +176,7 @@ const StyledButton = styled(Button)<any>`
     color: #fff;
     background-color: ${({theme}) => theme.color.main};
     &:hover {
-      background-color: ${({theme}) => theme.color.mainDarker};
+      background-color: ${({theme}) => theme.color.mainAlt};
     }
   }
 `
@@ -186,7 +186,8 @@ const AddTaskWrapper = styled.div`
 `
 
 const TaskWrapper = styled.div`
+  margin-bottom: 20px;
   :last-child {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 `

@@ -33,7 +33,7 @@ export const Task = React.memo((props: TaskPropsType) => {
     return (
         <ComponentWrapper key={props.task.id}>
             <StyledCheckbox
-                color={'primary'}
+                color={'default'}
                 checked={props.task.status === TaskStatuses.Completed}
                 onChange={changeStatus}
                 taskStatus={props.task.status}/>
@@ -49,12 +49,6 @@ export const Task = React.memo((props: TaskPropsType) => {
     )
 })
 
-const StyledCheckbox = styled(Checkbox)<any>`
-  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
-`
-const StyledEditableSpan = styled.div<any>`
-  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
-`
 const ComponentWrapper = styled.div`
   position: relative;
 
@@ -64,7 +58,31 @@ const ComponentWrapper = styled.div`
   width: 100%;
 `
 
+const StyledCheckbox = styled(Checkbox)<any>`
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  
+  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
+  margin-right: 5px;
+  
+  &.MuiCheckbox-root {
+    color: ${({theme}) => theme.color.main};
+  }
+  &.MuiCheckbox-colorSecondary.Mui-checked {
+    color: ${({theme}) => theme.color.main};
+  }
+`
+const StyledEditableSpan = styled.div<any>`
+  width: 80%;
+  
+  padding-left: 45px;
+  
+  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
+`
+
 const IconButtonStyled = styled(IconButton)`
   position: absolute;
   right: 0;
+  top: -15px;
 `
