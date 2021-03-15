@@ -10,21 +10,6 @@ import {useDispatch} from "react-redux";
 import {fetchTasksTC} from "../../bll/tasks-reducer";
 import styled from "styled-components";
 
-// Types
-type PropsType = {
-    id: string
-    title: string
-    filter: FilterValuesType
-    tasks: Array<TaskType>
-    addTask: (todolistId: string, title: string) => void
-    changeFilter: (todolistId: string, filterValue: FilterValuesType) => void
-    removeTodolist: (todolistId: string) => void
-    changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
-    changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
-    removeTask: (taskId: string, todolistId: string) => void
-    changeTodoListTitle: (todolistId: string, title: string) => void
-}
-
 // Component
 export const ToDoList = React.memo((props: PropsType) => {
     console.log('to do list called')
@@ -191,3 +176,18 @@ const TaskWrapper = styled.div`
     margin-bottom: 30px;
   }
 `
+
+// Types
+type PropsType = {
+    id: string
+    title: string
+    filter: FilterValuesType
+    tasks: Array<TaskType>
+    addTask: (todolistId: string, title: string) => void
+    changeFilter: (todolistId: string, filterValue: FilterValuesType) => void
+    removeTodolist: (todolistId: string) => void
+    changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
+    changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
+    removeTask: (taskId: string, todolistId: string) => void
+    changeTodoListTitle: (todolistId: string, title: string) => void
+}

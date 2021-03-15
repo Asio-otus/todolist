@@ -2,11 +2,6 @@ import React, {ChangeEvent, useState} from "react";
 import {TextField} from "@material-ui/core";
 import styled from "styled-components";
 
-export type EditableSpanPropsType = {
-    title: string
-    changeTitle: (title: string) => void
-}
-
 // Component
 export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
 
@@ -54,3 +49,9 @@ const StyledTextField = styled(TextField)<any>`
     border-bottom-color: ${({theme}) => theme.color.main};
   }
 `
+
+// Types
+export type EditableSpanPropsType = {
+    title: string
+    changeTitle: (title: string) => void
+}

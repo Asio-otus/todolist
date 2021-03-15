@@ -4,10 +4,6 @@ import {IconButton, TextField} from "@material-ui/core";
 import {TextFieldProps} from "@material-ui/core/TextField/TextField";
 import styled from "styled-components";
 
-export type AddItemFormPropsType = TextFieldProps & {
-    addItem: (title: string) => void
-}
-
 // Component
 export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
 
@@ -99,3 +95,8 @@ const IconButtonStyled = styled(IconButton)<any>`
   margin-left: 10px;
   color: ${({theme}) => theme.color.main};
 `
+
+// Types
+export type AddItemFormPropsType = TextFieldProps & {
+    addItem: (title: string) => void
+}

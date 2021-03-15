@@ -1,17 +1,9 @@
 import React, {ChangeEvent, useCallback} from "react";
 import {Checkbox, IconButton} from "@material-ui/core";
 import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
-import {Delete, Style} from "@material-ui/icons";
+import {Delete} from "@material-ui/icons";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
 import styled from "styled-components";
-
-export type TaskPropsType = {
-    task: TaskType
-    toDoListId: string
-    changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
-    changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
-    removeTask: (taskId: string, todolistId: string) => void
-}
 
 // Component
 export const Task = React.memo((props: TaskPropsType) => {
@@ -49,6 +41,7 @@ export const Task = React.memo((props: TaskPropsType) => {
     )
 })
 
+// Styled components
 const ComponentWrapper = styled.div`
   position: relative;
 
@@ -86,3 +79,12 @@ const IconButtonStyled = styled(IconButton)`
   right: 0;
   top: -15px;
 `
+
+// Types
+export type TaskPropsType = {
+    task: TaskType
+    toDoListId: string
+    changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
+    changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
+    removeTask: (taskId: string, todolistId: string) => void
+}
