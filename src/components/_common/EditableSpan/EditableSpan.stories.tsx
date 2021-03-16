@@ -2,6 +2,7 @@ import React from "react";
 import {action} from "@storybook/addon-actions";
 import {EditableSpan, EditableSpanPropsType} from "./EditableSpan";
 import {Meta, Story} from "@storybook/react/types-6-0";
+import {ReduxStoreProviderDecorator} from "../../../storybook/ReduxStoreProviderDecorator";
 
 export default {
     title: 'Todolist/EditableSpan',
@@ -15,6 +16,7 @@ export default {
             description: 'Start value EditableSpan'
         }
     },
+    decorators: [ReduxStoreProviderDecorator]
 } as Meta
 
 const Template: Story<EditableSpanPropsType> = (args) => <EditableSpan {...args}/>

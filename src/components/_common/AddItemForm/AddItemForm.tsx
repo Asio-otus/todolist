@@ -5,17 +5,17 @@ import {TextFieldProps} from "@material-ui/core/TextField/TextField";
 import styled from "styled-components";
 
 // Component
-export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
+export const AddItemForm = React.memo(({addItem, disabled = false}: AddItemFormPropsType) => {
 
     // Local state
     const [title, setTitle] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
 
     // Local functions
-    const addItem = () => {
+    const addItemHandler = () => {
         const itemTitle = title.trim()
         if (itemTitle) {
-            props.addItem(itemTitle);
+            addItem(itemTitle);
             setTitle('')
         } else {
             setError("Title is required!")
@@ -31,7 +31,7 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
     }
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") addItem()
+        if (e.key === "Enter") addItemHandler()
     }
 
     return (
@@ -43,10 +43,10 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
                 error={!!error}
                 helperText={error}
                 variant={'outlined'}
+                disabled={disabled}
                 fullWidth
-                {...props}
             />
-            <IconButtonStyled onClick={addItem}>
+            <IconButtonStyled onClick={addItemHandler} disabled={disabled}>
                 <AddBox/>
             </IconButtonStyled>
         </ComponentWrapper>
@@ -55,7 +55,7 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
 
 const ComponentWrapper = styled.div`
   position: relative;
-  
+
   display: flex;
   align-items: center;
   width: 100%;
@@ -65,12 +65,13 @@ const TextFieldStyled = styled(TextField)<any>`
   border-radius: 4px;
   background-color: #fff;
   box-shadow: ${({theme}) => theme.effect.shadow};
-  
+
   & label.Mui-focused {
     color: ${({theme}) => theme.color.main};
   }
+
   & .MuiOutlinedInput-root {
-    
+
     &:hover fieldset {
       border-color: ${({theme}) => theme.color.main};
     }
@@ -99,4 +100,5 @@ const IconButtonStyled = styled(IconButton)<any>`
 // Types
 export type AddItemFormPropsType = TextFieldProps & {
     addItem: (title: string) => void
+    disabled?: boolean
 }

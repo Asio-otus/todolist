@@ -3,56 +3,57 @@ import {AddItemForm} from "../_common/AddItemForm/AddItemForm";
 import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {Button, IconButton} from "@material-ui/core";
-import {FilterValuesType} from "../../bll/todolists-reducer";
+import {FilterValuesType, ToDoListDomainType} from "../../bll/reducers/todolists-reducer";
 import {Task} from "../Task/Task";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
 import {useDispatch} from "react-redux";
-import {fetchTasksTC} from "../../bll/tasks-reducer";
+import {fetchTasks} from "../../bll/reducers/tasks-reducer";
 import styled from "styled-components";
 
 // Component
-export const ToDoList = React.memo((props: PropsType) => {
-    console.log('to do list called')
+export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => {
 
     // Connect
     const dispatch = useDispatch()
 
     // Side effects
     useEffect(() => {
-        dispatch(fetchTasksTC(props.id))
+        if (!demoMode) {
+            dispatch(fetchTasks(props.todolist.id))
+        }
     }, [])
 
     // Callbacks
     const addTask = useCallback((title: string) => {
-        props.addTask(title, props.id)
+        props.addTask(title, props.todolist.id)
     }, [])
 
     const removeTodolist = useCallback(() => {
-        props.removeTodolist(props.id)
+        props.removeTodolist(props.todolist.id)
     }, [])
 
     const changeTodolistTitle = useCallback((title: string) => {
-        props.changeTodoListTitle(props.id, title)
+        props.changeTodoListTitle(props.todolist.id, title)
     }, [])
 
     const filterAll = useCallback(() => {
-        props.changeFilter(props.id, 'all')
+        props.changeFilter(props.todolist.id, 'all')
     }, [])
 
     const filterActive = useCallback(() => {
-        props.changeFilter(props.id, 'active')
+        props.changeFilter(props.todolist.id, 'active')
     }, [])
 
     const filterCompleted = useCallback(() => {
-        props.changeFilter(props.id, 'completed')
+        props.changeFilter(props.todolist.id, 'completed')
     }, [])
 
     // Component logic
     let tasksForTodoList = props.tasks;
-    if (props.filter === 'active') {
+    if (props.todolist.filter === 'active') {
         tasksForTodoList = props.tasks.filter(t => t.status === TaskStatuses.New)
     }
-    if (props.filter === 'completed') {
+    if (props.todolist.filter === 'completed') {
         tasksForTodoList = props.tasks.filter(t => t.status === TaskStatuses.Completed)
     }
 
@@ -61,39 +62,37 @@ export const ToDoList = React.memo((props: PropsType) => {
         <ToDoListCard>
             <TitleWrapper>
                 <TaskTitle>
-                    <EditableSpan title={props.title} changeTitle={changeTodolistTitle}/>
+                    <EditableSpan title={props.todolist.title} changeTitle={changeTodolistTitle}/>
                 </TaskTitle>
-                <IconButtonStyled onClick={removeTodolist}>
+                <IconButtonStyled onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>
                     <Delete/>
                 </IconButtonStyled>
             </TitleWrapper>
             {/*Add new task input*/}
             <AddTaskWrapper>
-                <AddItemForm addItem={addTask} label={'Add task'}/>
+                <AddItemForm addItem={addTask} label={'Add task'} disabled={props.todolist.entityStatus === 'loading'}/>
             </AddTaskWrapper>
             {/*Tasks*/}
-            <div>
-                {
-                    tasksForTodoList.map(task => <TaskWrapper><Task key={task.id}
-                              task={task}
-                              toDoListId={props.id}
-                              changeTaskStatus={props.changeTaskStatus}
-                              changeTaskTitle={props.changeTaskTitle}
-                              removeTask={props.removeTask}/></TaskWrapper>)
-                }
-            </div>
+
+            {
+                tasksForTodoList.map(task => <TaskWrapper key={task.id}><Task task={task}
+                                                                              toDoListId={props.todolist.id}
+                                                                              changeTaskStatus={props.changeTaskStatus}
+                                                                              changeTaskTitle={props.changeTaskTitle}
+                                                                              removeTask={props.removeTask}/></TaskWrapper>)
+            }
             {/*Filter buttons*/}
             <ButtonWrapper>
                 <StyledButton
-                    variant={props.filter === 'all' ? 'contained' : 'outlined'}
+                    variant={props.todolist.filter === 'all' ? 'contained' : 'outlined'}
                     onClick={filterAll}>All
                 </StyledButton>
                 <StyledButton
-                    variant={props.filter === 'active' ? 'contained' : 'outlined'}
+                    variant={props.todolist.filter === 'active' ? 'contained' : 'outlined'}
                     onClick={filterActive}>Active
                 </StyledButton>
                 <StyledButton
-                    variant={props.filter === 'completed' ? 'contained' : 'outlined'}
+                    variant={props.todolist.filter === 'completed' ? 'contained' : 'outlined'}
                     onClick={filterCompleted}>Completed
                 </StyledButton>
             </ButtonWrapper>
@@ -151,6 +150,7 @@ const StyledButton = styled(Button)<any>`
 
   &.MuiButton-outlined {
     color: ${({theme}) => theme.color.secondary};
+
     &:hover {
       color: #fff;
       background-color: ${({theme}) => theme.color.main};
@@ -160,6 +160,7 @@ const StyledButton = styled(Button)<any>`
   &.MuiButton-contained {
     color: #fff;
     background-color: ${({theme}) => theme.color.main};
+
     &:hover {
       background-color: ${({theme}) => theme.color.mainAlt};
     }
@@ -172,6 +173,7 @@ const AddTaskWrapper = styled.div`
 
 const TaskWrapper = styled.div`
   margin-bottom: 20px;
+
   :last-child {
     margin-bottom: 30px;
   }
@@ -179,9 +181,7 @@ const TaskWrapper = styled.div`
 
 // Types
 type PropsType = {
-    id: string
-    title: string
-    filter: FilterValuesType
+    todolist: ToDoListDomainType
     tasks: Array<TaskType>
     addTask: (todolistId: string, title: string) => void
     changeFilter: (todolistId: string, filterValue: FilterValuesType) => void
@@ -190,4 +190,5 @@ type PropsType = {
     changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
     removeTask: (taskId: string, todolistId: string) => void
     changeTodoListTitle: (todolistId: string, title: string) => void
+    demoMode?: boolean
 }

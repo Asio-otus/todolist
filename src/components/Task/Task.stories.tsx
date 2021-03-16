@@ -4,10 +4,12 @@ import {Meta, Story} from "@storybook/react/types-6-0";
 import {action} from "@storybook/addon-actions";
 import {TaskPriorities, TaskStatuses} from "../../api/todolist-api";
 import {v1} from "uuid";
+import {ReduxStoreProviderDecorator} from "../../storybook/ReduxStoreProviderDecorator";
 
 export default {
     title: 'Todolist/Task',
-    component: Task
+    component: Task,
+    decorators: [ReduxStoreProviderDecorator]
 } as Meta
 
 const changeTaskStatusCallback = action('Status changed')

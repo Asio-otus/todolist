@@ -1,53 +1,50 @@
-import React, {useCallback} from 'react';
-import {AddItemForm} from "./components/_common/AddItemForm/AddItemForm";
-import {addToDoListTC} from "./bll/todolists-reducer";
-import {useDispatch} from "react-redux";
-import {Container} from "./components/_layout/Container";
+import React from 'react';
 import styled from 'styled-components';
 import {ToDoListPage} from "./pages/ToDoListPage";
+import {LinearProgress} from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "./bll/store";
+import {RequestStatusType} from "./bll/reducers/app-reducer";
 
 // Component
-export function App() {
-    console.log('App is called')
+export const App: React.FC<PropsType> = ({demoMode = false}) => {
 
-    const dispatch = useDispatch()
-
-    const addTodoList = useCallback((title: string) => {
-        dispatch(addToDoListTC(title))
-    }, [])
+    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
     // Render
     return (
         <div>
             <Header>
-                {/* Not sure If I should keep adding to-dos inside of the header*/}
-                <ItemFormWrapper>
-                    <AddItemForm addItem={addTodoList} label={'Add to do list'}/>
-                </ItemFormWrapper>
+                {status === 'loading' && <LinearProgressStyled/>}
             </Header>
-            <Container>
-                <ToDoListPage/>
-            </Container>
+            <ToDoListPage demoMode={demoMode}/>
         </div>
     )
 }
 
 // Styled components
 const Header = styled.header`
+  position: relative;
+  z-index: 100;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  margin-bottom: 30px;
-
   height: 100px;
 
-  background-color: ${({theme}) => theme.color.lightGray};
+  background-color: ${({theme}) => theme.color.main};
   box-shadow: ${({theme}) => theme.effect.shadow};
 `
 
-const ItemFormWrapper = styled.div`
-  width: 30%;
-  min-width: 300px;
+const LinearProgressStyled = styled(LinearProgress)`
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
 `
+
+// Types
+type PropsType = {
+    demoMode?: boolean
+}
