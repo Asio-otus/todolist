@@ -1,0 +1,56 @@
+import React from "react";
+import {FormControl, FormControlLabel, FormLabel} from "@material-ui/core";
+import {TextFieldStyled} from "../_common/TextFieldStyled";
+// @ts-ignore
+import {CheckboxStyled} from "../_common/CheckboxStyled";
+import {ButtonStyled} from "../_common/ButtonStyled";
+import {useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import {login} from "../../bll/reducers/auth-reducer";
+
+type PropsType = {}
+
+export const Login: React.FC<PropsType> = () => {
+
+    const dispatch = useDispatch()
+
+    const formik = useFormik({
+        validate: (values) => {
+            if (!values.email) {
+                return {
+                    email: 'Email is required'
+                }
+            }
+            if (!values.password) {
+                return {
+                    password: 'Password is required'
+                }
+            }
+        },
+        initialValues: {
+            email: '',
+            password: '',
+            rememberMe: false
+        },
+        onSubmit: values => {
+            dispatch(login(values))
+        }
+    })
+
+    return (
+        <form onSubmit={formik.handleSubmit}>
+            <FormControl>
+                <FormLabel/>
+                <TextFieldStyled label='Email' {...formik.getFieldProps('email')}/>
+                {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+                <TextFieldStyled label='Password' {...formik.getFieldProps('password')} type='password'/>
+                {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+                <FormControlLabel label='Remember me'
+                                  control={<CheckboxStyled {...formik.getFieldProps('rememberMe')}
+                                                           checked={formik.values.rememberMe}
+                                                           color='default'/>}/>
+                <ButtonStyled type='submit'>Login</ButtonStyled>
+            </FormControl>
+        </form>
+    )
+}

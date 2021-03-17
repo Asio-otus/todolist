@@ -3,6 +3,7 @@ import {AddBox} from "@material-ui/icons";
 import {IconButton, TextField} from "@material-ui/core";
 import {TextFieldProps} from "@material-ui/core/TextField/TextField";
 import styled from "styled-components";
+import { TextFieldStyled } from "../TextFieldStyled";
 
 // Component
 export const AddItemForm = React.memo(({addItem, disabled = false}: AddItemFormPropsType) => {
@@ -59,37 +60,6 @@ const ComponentWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-`
-
-const TextFieldStyled = styled(TextField)<any>`
-  border-radius: 4px;
-  background-color: #fff;
-  box-shadow: ${({theme}) => theme.effect.shadow};
-
-  & label.Mui-focused {
-    color: ${({theme}) => theme.color.main};
-  }
-
-  & .MuiOutlinedInput-root {
-
-    &:hover fieldset {
-      border-color: ${({theme}) => theme.color.main};
-    }
-
-    &.Mui-focused fieldset {
-      border-color: ${({theme}) => theme.color.main};
-    }
-  }
-
-  & .MuiInput-underline:before {
-    &:hover {
-      border-bottom-color: ${({theme}) => theme.color.main};
-    }
-  }
-
-  & .MuiInput-underline:after {
-    border-bottom-color: ${({theme}) => theme.color.main};
-  }
 `
 
 const IconButtonStyled = styled(IconButton)<any>`

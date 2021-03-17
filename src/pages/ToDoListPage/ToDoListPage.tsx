@@ -1,21 +1,22 @@
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../bll/store";
+import {AppRootStateType} from "../../bll/store";
 import {
     changeToDoListFilter,
-    createToDoList, deleteToDoList,
+    createToDoList,
+    deleteToDoList,
     fetchToDoLists,
     FilterValuesType,
     ToDoListDomainType,
     updateToDoListTitle
-} from "../bll/reducers/todolists-reducer";
-import {createTask, deleteTask, TasksStateType, updateTaskTC} from "../bll/reducers/tasks-reducer";
+} from "../../bll/reducers/todolists-reducer";
+import {createTask, deleteTask, TasksStateType, updateTaskTC} from "../../bll/reducers/tasks-reducer";
 import React, {useCallback, useEffect} from "react";
-import {TaskStatuses} from "../api/todolist-api";
-import {ToDoList} from "../components/ToDoList/ToDoList";
-import {AddItemForm} from "../components/_common/AddItemForm/AddItemForm";
+import {TaskStatuses} from "../../api/todolist-api";
+import {ToDoList} from "../../components/ToDoList/ToDoList";
+import {AddItemForm} from "../../components/_common/AddItemForm/AddItemForm";
 import styled from "styled-components";
-import {Container} from "../components/_layout/Container";
-import {CustomizedSnackbars} from "../components/_common/ErrorSnackbar/ErrorSnackbar";
+import {Container} from "../../components/_layout/Container";
+import {Redirect} from "react-router-dom";
 
 export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
 
@@ -23,10 +24,11 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
     const dispatch = useDispatch()
     const todolists = useSelector<AppRootStateType, Array<ToDoListDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
 
     // Side effects
     useEffect(() => {
-        if (!demoMode) {
+        if (!demoMode || !isLoggedIn) {
             dispatch(fetchToDoLists())
         }
     }, [])
@@ -64,6 +66,10 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
         dispatch(updateToDoListTitle(todoListId, title))
     }, [])
 
+    if (!isLoggedIn) {
+        return <Redirect to={'/login'}/>
+    }
+
     return (
         <>
             <ItemFormContainer>
@@ -91,7 +97,6 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
                     )
                 })}
             </Container>
-            <CustomizedSnackbars/>
         </>
     )
 }

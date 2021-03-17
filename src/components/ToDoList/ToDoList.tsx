@@ -9,6 +9,7 @@ import {TaskStatuses, TaskType} from "../../api/todolist-api";
 import {useDispatch} from "react-redux";
 import {fetchTasks} from "../../bll/reducers/tasks-reducer";
 import styled from "styled-components";
+import {ButtonStyled} from "../_common/ButtonStyled";
 
 // Component
 export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => {
@@ -83,18 +84,18 @@ export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => 
             }
             {/*Filter buttons*/}
             <ButtonWrapper>
-                <StyledButton
+                <ButtonStyledLocal
                     variant={props.todolist.filter === 'all' ? 'contained' : 'outlined'}
                     onClick={filterAll}>All
-                </StyledButton>
-                <StyledButton
+                </ButtonStyledLocal>
+                <ButtonStyledLocal
                     variant={props.todolist.filter === 'active' ? 'contained' : 'outlined'}
                     onClick={filterActive}>Active
-                </StyledButton>
-                <StyledButton
+                </ButtonStyledLocal>
+                <ButtonStyledLocal
                     variant={props.todolist.filter === 'completed' ? 'contained' : 'outlined'}
                     onClick={filterCompleted}>Completed
-                </StyledButton>
+                </ButtonStyledLocal>
             </ButtonWrapper>
         </ToDoListCard>
     );
@@ -139,32 +140,8 @@ const ButtonWrapper = styled.div`
   justify-self: end;
 `
 
-const StyledButton = styled(Button)<any>`
+const ButtonStyledLocal = styled(ButtonStyled)<any>`
   padding: 5px 25px;
-  box-shadow: ${({theme}) => theme.effect.shadow};
-  border: none;
-
-  &.MuiButton-label {
-    color: #fff;
-  }
-
-  &.MuiButton-outlined {
-    color: ${({theme}) => theme.color.secondary};
-
-    &:hover {
-      color: #fff;
-      background-color: ${({theme}) => theme.color.main};
-    }
-  }
-
-  &.MuiButton-contained {
-    color: #fff;
-    background-color: ${({theme}) => theme.color.main};
-
-    &:hover {
-      background-color: ${({theme}) => theme.color.mainAlt};
-    }
-  }
 `
 
 const AddTaskWrapper = styled.div`

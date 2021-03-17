@@ -12,6 +12,8 @@ import {theme} from "../styles/theme";
 import {ThemeProvider} from "styled-components";
 import {GlobalStyles} from "../styles/global";
 import thunk from "redux-thunk";
+import {App} from "../App";
+import {BrowserRouter} from "react-router-dom";
 
 const rootReducer = combineReducers({
     tasks: tasksReducer,
@@ -80,7 +82,11 @@ const initialGlobalState: AppRootStateType = {
     },
     app: {
         status: 'idle',
-        error: null
+        error: null,
+        isInitialized: true
+    },
+    auth: {
+        isLoggedIn: false
     }
 };
 
@@ -92,7 +98,9 @@ export const ReduxStoreProviderDecorator = (storyFn: any) => {
             <ThemeProvider theme={theme}>
                 <GlobalStyles/>
                 <Provider store={storyBookStore}>
-                    {storyFn()}
+                    <BrowserRouter>
+                        {storyFn()}
+                    </BrowserRouter>
                 </Provider>
             </ThemeProvider>
         </StylesProvider>

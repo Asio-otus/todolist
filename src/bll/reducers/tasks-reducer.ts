@@ -87,8 +87,6 @@ export const createTask = (title: string, toDoListId: string) => (dispatch: Disp
         })
 }
 
-
-
 export const deleteTask = (taskId: string, toDoListId: string) => (dispatch: Dispatch) => {
     dispatch(setAppStatus('loading'))
     todolistAPI.deleteTask(toDoListId, taskId)
@@ -144,7 +142,6 @@ export type ActionType = ReturnType<typeof addTask>
     | ReturnType<typeof addToDoList>
     | ReturnType<typeof removeToDoList>
     | ReturnType<typeof setToDoLists>
-
 
 export type TasksStateType = {
     [key: string]: Array<TaskType>
