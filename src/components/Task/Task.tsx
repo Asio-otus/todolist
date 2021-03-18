@@ -1,10 +1,9 @@
 import React, {ChangeEvent, useCallback} from "react";
-import {IconButton} from "@material-ui/core";
+import {Checkbox, IconButton} from "@material-ui/core";
 import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
 import styled from "styled-components";
-import {CheckboxStyled} from "../_common/CheckboxStyled";
 
 // Component
 export const Task = React.memo((props: TaskPropsType) => {
@@ -25,7 +24,7 @@ export const Task = React.memo((props: TaskPropsType) => {
     // Render
     return (
         <ComponentWrapper key={props.task.id}>
-                <CheckboxStyledLocal
+                <CheckboxStyled
                     color='default'
                     checked={props.task.status === TaskStatuses.Completed}
                     onChange={changeStatus}
@@ -60,7 +59,7 @@ const StyledEditableSpan = styled.div<any>`
   opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
 `
 
-const CheckboxStyledLocal = styled(CheckboxStyled)<any>`
+const CheckboxStyled = styled(Checkbox)<any>`
   position: absolute;
   z-index: 1;
   top: -10px;

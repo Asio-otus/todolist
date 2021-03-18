@@ -1,14 +1,13 @@
 import React, {useCallback, useEffect} from 'react';
 import styled from 'styled-components';
 import {ToDoListPage} from "./pages/ToDoListPage/ToDoListPage";
-import {CircularProgress, LinearProgress} from "@material-ui/core";
+import {CircularProgress, LinearProgress, Button} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./bll/store";
 import {initializeApp, RequestStatusType} from "./bll/reducers/app-reducer";
 import {Route} from 'react-router-dom';
 import {LoginPage} from "./pages/LoginPage/LoginPage";
 import {CustomizedSnackbars} from "./components/_common/ErrorSnackbar/ErrorSnackbar";
-import {ButtonStyled} from './components/_common/ButtonStyled';
 import {logout} from "./bll/reducers/auth-reducer";
 
 // Component
@@ -39,7 +38,7 @@ export const App: React.FC<PropsType> = ({demoMode = false}) => {
         <div>
             <Header>
                 {status === 'loading' && <LinearProgressStyled/>}
-                {isLoggedIn && <ButtonStyled onClick={logoutHandler}>Log out</ButtonStyled>}
+                {isLoggedIn && <Button onClick={logoutHandler}>Log out</Button>}
             </Header>
             <Route path={'/'} render={() => <ToDoListPage demoMode={demoMode}/>} exact/>
             <Route path={'/login'} render={() => <LoginPage/>}/>
@@ -59,8 +58,7 @@ const Header = styled.header`
 
   height: 100px;
 
-  background-color: ${({theme}) => theme.color.main};
-  box-shadow: ${({theme}) => theme.effect.shadow};
+  background-color: ${({theme}) => theme.palette.primary.main};
 `
 
 const LinearProgressStyled = styled(LinearProgress)`

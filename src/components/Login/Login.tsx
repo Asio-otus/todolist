@@ -1,9 +1,5 @@
 import React from "react";
-import {FormControl, FormControlLabel, FormLabel} from "@material-ui/core";
-import {TextFieldStyled} from "../_common/TextFieldStyled";
-// @ts-ignore
-import {CheckboxStyled} from "../_common/CheckboxStyled";
-import {ButtonStyled} from "../_common/ButtonStyled";
+import {FormControl, FormControlLabel, FormLabel, Checkbox, TextField, Button} from "@material-ui/core";
 import {useFormik} from "formik";
 import {useDispatch} from "react-redux";
 import {login} from "../../bll/reducers/auth-reducer";
@@ -41,15 +37,15 @@ export const Login: React.FC<PropsType> = () => {
         <form onSubmit={formik.handleSubmit}>
             <FormControl>
                 <FormLabel/>
-                <TextFieldStyled label='Email' {...formik.getFieldProps('email')}/>
+                <TextField label='Email' {...formik.getFieldProps('email')}/>
                 {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-                <TextFieldStyled label='Password' {...formik.getFieldProps('password')} type='password'/>
+                <TextField label='Password' {...formik.getFieldProps('password')} type='password'/>
                 {formik.errors.password ? <div>{formik.errors.password}</div> : null}
                 <FormControlLabel label='Remember me'
-                                  control={<CheckboxStyled {...formik.getFieldProps('rememberMe')}
+                                  control={<Checkbox {...formik.getFieldProps('rememberMe')}
                                                            checked={formik.values.rememberMe}
                                                            color='default'/>}/>
-                <ButtonStyled type='submit'>Login</ButtonStyled>
+                <Button type='submit'>Login</Button>
             </FormControl>
         </form>
     )

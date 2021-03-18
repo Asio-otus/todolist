@@ -1,6 +1,6 @@
-export type ThemeType = typeof theme;
+export type ThemeType = typeof myTheme;
 
-export const theme = {
+export const myTheme = {
     font: {
         url: `https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap`,
         family: {

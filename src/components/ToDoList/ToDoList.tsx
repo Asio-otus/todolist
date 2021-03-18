@@ -2,14 +2,13 @@ import React, {useCallback, useEffect} from 'react';
 import {AddItemForm} from "../_common/AddItemForm/AddItemForm";
 import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
-import {Button, IconButton} from "@material-ui/core";
+import {Button, Card, IconButton} from "@material-ui/core";
 import {FilterValuesType, ToDoListDomainType} from "../../bll/reducers/todolists-reducer";
 import {Task} from "../Task/Task";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
 import {useDispatch} from "react-redux";
 import {fetchTasks} from "../../bll/reducers/tasks-reducer";
 import styled from "styled-components";
-import {ButtonStyled} from "../_common/ButtonStyled";
 
 // Component
 export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => {
@@ -60,7 +59,7 @@ export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => 
 
     // Render
     return (
-        <ToDoListCard>
+        <CardStyled>
             <TitleWrapper>
                 <TaskTitle>
                     <EditableSpan title={props.todolist.title} changeTitle={changeTodolistTitle}/>
@@ -84,25 +83,25 @@ export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => 
             }
             {/*Filter buttons*/}
             <ButtonWrapper>
-                <ButtonStyledLocal
+                <ButtonStyled
                     variant={props.todolist.filter === 'all' ? 'contained' : 'outlined'}
                     onClick={filterAll}>All
-                </ButtonStyledLocal>
-                <ButtonStyledLocal
+                </ButtonStyled>
+                <ButtonStyled
                     variant={props.todolist.filter === 'active' ? 'contained' : 'outlined'}
                     onClick={filterActive}>Active
-                </ButtonStyledLocal>
-                <ButtonStyledLocal
+                </ButtonStyled>
+                <ButtonStyled
                     variant={props.todolist.filter === 'completed' ? 'contained' : 'outlined'}
                     onClick={filterCompleted}>Completed
-                </ButtonStyledLocal>
+                </ButtonStyled>
             </ButtonWrapper>
-        </ToDoListCard>
+        </CardStyled>
     );
 })
 
 // Styles
-const ToDoListCard = styled.div`
+const CardStyled = styled(Card)`
   position: relative;
 
   margin-left: 25px;
@@ -111,10 +110,6 @@ const ToDoListCard = styled.div`
 
   width: 400px;
   height: 100%;
-
-  background-color: ${({theme}) => theme.color.lightGray};
-  box-shadow: ${({theme}) => theme.effect.shadow};
-  border-radius: ${({theme}) => theme.border.size.md};
 `
 
 const TitleWrapper = styled.div`
@@ -140,7 +135,7 @@ const ButtonWrapper = styled.div`
   justify-self: end;
 `
 
-const ButtonStyledLocal = styled(ButtonStyled)<any>`
+const ButtonStyled = styled(Button)<any>`
   padding: 5px 25px;
 `
 

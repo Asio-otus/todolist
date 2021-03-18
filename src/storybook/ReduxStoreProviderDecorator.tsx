@@ -7,13 +7,12 @@ import {v1} from "uuid";
 import {TaskPriorities, TaskStatuses} from "../api/todolist-api";
 import {AppRootStateType} from "../bll/store";
 import {appReducer} from "../bll/reducers/app-reducer";
-import {StylesProvider} from "@material-ui/core/styles";
-import {theme} from "../styles/theme";
+import {MuiThemeProvider, StylesProvider} from "@material-ui/core/styles";
 import {ThemeProvider} from "styled-components";
-import {GlobalStyles} from "../styles/global";
 import thunk from "redux-thunk";
-import {App} from "../App";
 import {BrowserRouter} from "react-router-dom";
+import {theme} from "../styles/muiTheme";
+import {CssBaseline} from "@material-ui/core";
 
 const rootReducer = combineReducers({
     tasks: tasksReducer,
@@ -95,14 +94,16 @@ export const storyBookStore = createStore(rootReducer, initialGlobalState, apply
 export const ReduxStoreProviderDecorator = (storyFn: any) => {
     return (
         <StylesProvider injectFirst>
-            <ThemeProvider theme={theme}>
-                <GlobalStyles/>
-                <Provider store={storyBookStore}>
-                    <BrowserRouter>
-                        {storyFn()}
-                    </BrowserRouter>
-                </Provider>
-            </ThemeProvider>
+            <MuiThemeProvider theme={theme}>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <Provider store={storyBookStore}>
+                        <BrowserRouter>
+                            {storyFn()}
+                        </BrowserRouter>
+                    </Provider>
+                </ThemeProvider>
+            </MuiThemeProvider>
         </StylesProvider>
     )
 }

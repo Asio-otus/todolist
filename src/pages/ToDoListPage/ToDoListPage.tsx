@@ -112,9 +112,6 @@ const ItemFormContainer = styled.header`
 
   width: 100vw;
   height: 100px;
-
-  background-color: ${({theme}) => theme.color.lightGray};
-  box-shadow: ${({theme}) => theme.effect.shadow};
 `
 
 const ItemFormWrapper = styled.div`

@@ -40,13 +40,11 @@ const StyledTextField = styled(TextField)<any>`
   & .MuiInput-underline:before {
     position: absolute;
     top: 20px;
-    border-bottom-color: ${({theme}) => theme.color.main};
   }
-  
+
   & .MuiInput-underline:after {
     position: absolute;
     top: 20px;
-    border-bottom-color: ${({theme}) => theme.color.main};
   }
 `
 

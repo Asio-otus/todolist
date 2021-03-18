@@ -4,25 +4,28 @@ import * as serviceWorker from './serviceWorker';
 import {App} from "./App";
 import {Provider} from "react-redux";
 import {store} from "./bll/store";
-import {StylesProvider} from '@material-ui/core/styles';
+import {MuiThemeProvider, StylesProvider} from '@material-ui/core/styles';
 import {ThemeProvider} from "styled-components";
-import {theme} from "./styles/theme";
-import {GlobalStyles} from './styles/global';
 import {BrowserRouter} from "react-router-dom";
+import {CssBaseline} from "@material-ui/core";
+import {theme} from "./styles/muiTheme";
 
 ReactDOM.render(
     <StylesProvider injectFirst>
-        <ThemeProvider theme={theme}>
-            <GlobalStyles/>
-            <Provider store={store}>
-                <BrowserRouter>
-                    <App/>
-                </BrowserRouter>
-            </Provider>
-        </ThemeProvider>
+        <MuiThemeProvider theme={theme}>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Provider store={store}>
+                    <BrowserRouter>
+                        <App/>
+                    </BrowserRouter>
+                </Provider>
+            </ThemeProvider>
+        </MuiThemeProvider>
     </StylesProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+

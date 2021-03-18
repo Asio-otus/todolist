@@ -3,10 +3,9 @@ import {AddBox} from "@material-ui/icons";
 import {IconButton, TextField} from "@material-ui/core";
 import {TextFieldProps} from "@material-ui/core/TextField/TextField";
 import styled from "styled-components";
-import { TextFieldStyled } from "../TextFieldStyled";
 
 // Component
-export const AddItemForm = React.memo(({addItem, disabled = false}: AddItemFormPropsType) => {
+export const AddItemForm = React.memo(({addItem, disabled = false, ...props}: AddItemFormPropsType) => {
 
     // Local state
     const [title, setTitle] = useState<string>('');
@@ -37,15 +36,14 @@ export const AddItemForm = React.memo(({addItem, disabled = false}: AddItemFormP
 
     return (
         <ComponentWrapper>
-            <TextFieldStyled
+            <TextField
                 value={title}
                 onChange={onChangeHandler}
                 onKeyPress={onKeyPressHandler}
                 error={!!error}
                 helperText={error}
-                variant={'outlined'}
                 disabled={disabled}
-                fullWidth
+                {...props}
             />
             <IconButtonStyled onClick={addItemHandler} disabled={disabled}>
                 <AddBox/>
@@ -64,7 +62,6 @@ const ComponentWrapper = styled.div`
 
 const IconButtonStyled = styled(IconButton)<any>`
   margin-left: 10px;
-  color: ${({theme}) => theme.color.main};
 `
 
 // Types
