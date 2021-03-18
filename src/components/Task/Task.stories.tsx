@@ -37,7 +37,8 @@ TaskIsDoneExample.args = {
         id: v1(),
         todoListId: '0',
         order: 0,
-        addedDate: ''
+        addedDate: '',
+        entityStatus: 'succeeded'
     },
     toDoListId: 'todolistId1'
 }
@@ -55,7 +56,8 @@ TaskIsNotDoneExample.args = {
         id: v1(),
         todoListId: '0',
         order: 0,
-        addedDate: ''
+        addedDate: '',
+        entityStatus: 'succeeded'
     },
     toDoListId: 'todolistId1'
 }

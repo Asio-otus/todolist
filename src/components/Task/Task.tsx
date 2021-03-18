@@ -4,6 +4,7 @@ import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {TaskStatuses, TaskType} from "../../api/todolist-api";
 import styled from "styled-components";
+import {RequestStatusType} from "../../bll/reducers/app-reducer";
 
 // Component
 export const Task = React.memo((props: TaskPropsType) => {
@@ -24,17 +25,18 @@ export const Task = React.memo((props: TaskPropsType) => {
     // Render
     return (
         <ComponentWrapper key={props.task.id}>
-                <CheckboxStyled
-                    color='default'
-                    checked={props.task.status === TaskStatuses.Completed}
-                    onChange={changeStatus}
-                    taskStatus={props.task.status}/>
+            <CheckboxStyled
+                checked={props.task.status === TaskStatuses.Completed}
+                onChange={changeStatus}
+                taskStatus={props.task.status}
+                disabled={props.task.entityStatus === 'loading' || props.toDoListEntityStatus === 'loading'}/>
             <StyledEditableSpan taskStatus={props.task.status}>
                 <EditableSpan
                     title={props.task.title}
-                    changeTitle={changeTitle}/>
+                    changeTitle={changeTitle}
+                    disabled={props.task.entityStatus === 'loading'}/>
             </StyledEditableSpan>
-            <IconButtonStyled onClick={removeTask}>
+            <IconButtonStyled onClick={removeTask} disabled={props.task.entityStatus === 'loading' || props.toDoListEntityStatus === 'loading'}>
                 <Delete/>
             </IconButtonStyled>
         </ComponentWrapper>
@@ -78,6 +80,7 @@ const IconButtonStyled = styled(IconButton)`
 export type TaskPropsType = {
     task: TaskType
     toDoListId: string
+    toDoListEntityStatus: RequestStatusType
     changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
     changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
     removeTask: (taskId: string, todolistId: string) => void

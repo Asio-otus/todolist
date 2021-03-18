@@ -45,13 +45,14 @@ export const AddItemForm = React.memo(({addItem, disabled = false, ...props}: Ad
                 disabled={disabled}
                 {...props}
             />
-            <IconButtonStyled onClick={addItemHandler} disabled={disabled}>
+            <IconButtonStyled onClick={addItemHandler} color={'primary'} disabled={disabled}>
                 <AddBox/>
             </IconButtonStyled>
         </ComponentWrapper>
     )
 })
 
+// Styles
 const ComponentWrapper = styled.div`
   position: relative;
 

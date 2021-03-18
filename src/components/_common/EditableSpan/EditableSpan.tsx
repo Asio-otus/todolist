@@ -9,8 +9,13 @@ export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
     const [editMode, setEditMode] = useState<boolean>(false)
     const [title, setTitle] = useState<string>(props.title)
 
+
     // Local functions
-    const onEditMode = () => setEditMode(true)
+    const onEditMode = () => {
+        if (!props.disabled) {
+            setEditMode(true)
+        }
+    }
     const offEditMode = () => {
         setEditMode(false)
         if (title.trim()) {
@@ -21,20 +26,23 @@ export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
 
     return (
         editMode
-            ? <StyledTextField onBlur={offEditMode}
-                               onChange={changeTitle}
-                               value={title}
-                               fullWidth
-                               autoFocus/>
+            ? <TextFieldWithoutPadding onBlur={offEditMode}
+                                       onChange={changeTitle}
+                                       variant={'standard'}
+                                       value={title}
+                                       autoFocus
+                                       disabled={props.disabled}/>
             : <span onDoubleClick={onEditMode}>{props.title}</span>
     )
 })
 
-const StyledTextField = styled(TextField)<any>`
+// Styles
+const TextFieldWithoutPadding = styled(TextField)<any>`
   position: relative;
 
   & .MuiInputBase-input {
     padding: 0;
+    font-size: 14px;
   }
 
   & .MuiInput-underline:before {
@@ -52,4 +60,5 @@ const StyledTextField = styled(TextField)<any>`
 export type EditableSpanPropsType = {
     title: string
     changeTitle: (title: string) => void
+    disabled?: boolean
 }

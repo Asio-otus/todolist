@@ -3,7 +3,7 @@ import {createMuiTheme} from "@material-ui/core";
 
 export const theme = createMuiTheme({
     typography: {
-        fontFamily: `'Montserrat', san-serif`
+        fontFamily: `'Montserrat', san-serif`,
     },
     palette: {
         primary: {
@@ -14,11 +14,22 @@ export const theme = createMuiTheme({
         }
     },
     shape: {
-        borderRadius: 5
+        borderRadius: 0
+    },
+    overrides: {
+        MuiTextField: {
+        }
     },
     props: {
         MuiTextField: {
-            fullWidth: true
+            fullWidth: true,
+            variant: 'outlined',
+        },
+        MuiCheckbox: {
+            color: 'primary'
+        },
+        MuiButton: {
+            variant: 'outlined'
         }
     }
 })

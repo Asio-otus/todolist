@@ -77,6 +77,7 @@ export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => 
             {
                 tasksForTodoList.map(task => <TaskWrapper key={task.id}><Task task={task}
                                                                               toDoListId={props.todolist.id}
+                                                                              toDoListEntityStatus={props.todolist.entityStatus}
                                                                               changeTaskStatus={props.changeTaskStatus}
                                                                               changeTaskTitle={props.changeTaskTitle}
                                                                               removeTask={props.removeTask}/></TaskWrapper>)
@@ -84,16 +85,19 @@ export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => 
             {/*Filter buttons*/}
             <ButtonWrapper>
                 <ButtonStyled
-                    variant={props.todolist.filter === 'all' ? 'contained' : 'outlined'}
-                    onClick={filterAll}>All
+                    color={props.todolist.filter === 'all' ? 'primary' : 'default'}
+                    onClick={filterAll}
+                    disabled={props.todolist.entityStatus === 'loading'}>All
                 </ButtonStyled>
                 <ButtonStyled
-                    variant={props.todolist.filter === 'active' ? 'contained' : 'outlined'}
-                    onClick={filterActive}>Active
+                    color={props.todolist.filter === 'active' ? 'primary' : 'default'}
+                    onClick={filterActive}
+                    disabled={props.todolist.entityStatus === 'loading'}>Active
                 </ButtonStyled>
                 <ButtonStyled
-                    variant={props.todolist.filter === 'completed' ? 'contained' : 'outlined'}
-                    onClick={filterCompleted}>Completed
+                    color={props.todolist.filter === 'completed' ? 'primary' : 'default'}
+                    onClick={filterCompleted}
+                    disabled={props.todolist.entityStatus === 'loading'}>Completed
                 </ButtonStyled>
             </ButtonWrapper>
         </CardStyled>

@@ -18,8 +18,6 @@ export const App: React.FC<PropsType> = ({demoMode = false}) => {
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
     const dispatch = useDispatch()
 
-
-
     useEffect(() => {
         dispatch(initializeApp())
     }, [])
@@ -57,8 +55,6 @@ const Header = styled.header`
   align-items: center;
 
   height: 100px;
-
-  background-color: ${({theme}) => theme.palette.primary.main};
 `
 
 const LinearProgressStyled = styled(LinearProgress)`
