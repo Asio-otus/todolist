@@ -62,41 +62,52 @@ export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => 
         <CardStyled>
             <TitleWrapper>
                 <TaskTitle>
-                    <EditableSpan title={props.todolist.title} changeTitle={changeTodolistTitle}/>
+                    <EditableSpan title={props.todolist.title} changeTitle={changeTodolistTitle}
+                                  disabled={props.todolist.entityStatus === 'loading'}/>
                 </TaskTitle>
                 <IconButtonStyled onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>
                     <Delete/>
                 </IconButtonStyled>
             </TitleWrapper>
+
             {/*Add new task input*/}
             <AddTaskWrapper>
                 <AddItemForm addItem={addTask} label={'Add task'} disabled={props.todolist.entityStatus === 'loading'}/>
             </AddTaskWrapper>
-            {/*Tasks*/}
 
-            {
-                tasksForTodoList.map(task => <TaskWrapper key={task.id}><Task task={task}
-                                                                              toDoListId={props.todolist.id}
-                                                                              toDoListEntityStatus={props.todolist.entityStatus}
-                                                                              changeTaskStatus={props.changeTaskStatus}
-                                                                              changeTaskTitle={props.changeTaskTitle}
-                                                                              removeTask={props.removeTask}/></TaskWrapper>)
+            {/*Tasks*/}
+            {tasksForTodoList.map(task => {
+                    return (
+                        <TaskWrapper key={task.id}>
+                            <Task task={task}
+                                  toDoListId={props.todolist.id}
+                                  toDoListEntityStatus={props.todolist.entityStatus}
+                                  changeTaskStatus={props.changeTaskStatus}
+                                  changeTaskTitle={props.changeTaskTitle}
+                                  removeTask={props.removeTask}/>
+                        </TaskWrapper>
+                    )
+                })
             }
+
             {/*Filter buttons*/}
             <ButtonWrapper>
                 <ButtonStyled
                     color={props.todolist.filter === 'all' ? 'primary' : 'default'}
                     onClick={filterAll}
+                    size={'small'}
                     disabled={props.todolist.entityStatus === 'loading'}>All
                 </ButtonStyled>
                 <ButtonStyled
                     color={props.todolist.filter === 'active' ? 'primary' : 'default'}
                     onClick={filterActive}
+                    size={'small'}
                     disabled={props.todolist.entityStatus === 'loading'}>Active
                 </ButtonStyled>
                 <ButtonStyled
                     color={props.todolist.filter === 'completed' ? 'primary' : 'default'}
                     onClick={filterCompleted}
+                    size={'small'}
                     disabled={props.todolist.entityStatus === 'loading'}>Completed
                 </ButtonStyled>
             </ButtonWrapper>
@@ -112,7 +123,7 @@ const CardStyled = styled(Card)`
   margin-bottom: 25px;
   padding: 30px;
 
-  width: 400px;
+  width: 380px;
   height: 100%;
 `
 
@@ -139,8 +150,8 @@ const ButtonWrapper = styled.div`
   justify-self: end;
 `
 
-const ButtonStyled = styled(Button)<any>`
-  padding: 5px 25px;
+const ButtonStyled = styled(Button)`
+  padding: 7px 22px;
 `
 
 const AddTaskWrapper = styled.div`

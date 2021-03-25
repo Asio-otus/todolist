@@ -78,24 +78,26 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
                 </ItemFormWrapper>
             </ItemFormContainer>
             <Container>
-                {todolists.map(tl => {
-                    let tasksForTodoList = tasks[tl.id]
-                    return (
-                        <ToDoList
-                            demoMode={demoMode}
-                            key={tl.id}
-                            todolist={tl}
-                            tasks={tasksForTodoList}
-                            removeTask={removeTask}
-                            addTask={addTask}
-                            changeFilter={changeFilter}
-                            changeTaskStatus={changeTaskStatus}
-                            removeTodolist={removeToDoList}
-                            changeTaskTitle={changeTaskTitle}
-                            changeTodoListTitle={changeTodoListTitle}
-                        />
-                    )
-                })}
+                <TodolistContainer>
+                    {todolists.map(tl => {
+                        let tasksForTodoList = tasks[tl.id]
+                        return (
+                            <ToDoList
+                                demoMode={demoMode}
+                                key={tl.id}
+                                todolist={tl}
+                                tasks={tasksForTodoList}
+                                removeTask={removeTask}
+                                addTask={addTask}
+                                changeFilter={changeFilter}
+                                changeTaskStatus={changeTaskStatus}
+                                removeTodolist={removeToDoList}
+                                changeTaskTitle={changeTaskTitle}
+                                changeTodoListTitle={changeTodoListTitle}
+                            />
+                        )
+                    })}
+                </TodolistContainer>
             </Container>
         </>
     )
@@ -107,6 +109,8 @@ const ItemFormContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  box-shadow: ${({theme}) => theme.shadows[4]};
 
   margin-bottom: 30px;
 
@@ -117,6 +121,31 @@ const ItemFormContainer = styled.header`
 const ItemFormWrapper = styled.div`
   width: 30%;
   min-width: 300px;
+`
+
+const TodolistContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  // The margin left is negative to compensate for the positive margin of the ToDoListCard... 
+  margin-left: -25px;
+  height: 100%;
+
+  @media (max-width: 2120px) {
+    width: 1620px;
+  }
+  
+  @media (max-width: 1715px) {
+    width: 1215px;
+  }
+  
+  @media (max-width: 1310px) {
+    width: 810px;
+  }
+
+  @media (max-width: 905px) {
+    width: 405px;
+  }
 `
 
 // Type

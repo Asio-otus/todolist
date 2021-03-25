@@ -1,14 +1,16 @@
 import React, {useCallback, useEffect} from 'react';
 import styled from 'styled-components';
 import {ToDoListPage} from "./pages/ToDoListPage/ToDoListPage";
-import {CircularProgress, LinearProgress, Button} from "@material-ui/core";
+import {AppBar, Button, CircularProgress, LinearProgress} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./bll/store";
 import {initializeApp, RequestStatusType} from "./bll/reducers/app-reducer";
-import {Route} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import {LoginPage} from "./pages/LoginPage/LoginPage";
 import {CustomizedSnackbars} from "./components/_common/ErrorSnackbar/ErrorSnackbar";
 import {logout} from "./bll/reducers/auth-reducer";
+import {Container} from "./components/_layout/Container";
+import {SvgLogo} from './components/_common/svg/SvgLogo';
 
 // Component
 export const App: React.FC<PropsType> = ({demoMode = false}) => {
@@ -34,27 +36,62 @@ export const App: React.FC<PropsType> = ({demoMode = false}) => {
     // Render
     return (
         <div>
-            <Header>
+            <StyledAppBar color={'primary'}>
                 {status === 'loading' && <LinearProgressStyled/>}
-                {isLoggedIn && <Button onClick={logoutHandler}>Log out</Button>}
-            </Header>
-            <Route path={'/'} render={() => <ToDoListPage demoMode={demoMode}/>} exact/>
-            <Route path={'/login'} render={() => <LoginPage/>}/>
+                <Container>
+                    <AppBarInner>
+                        <LogoWrapper>
+                            <StyledSvgLogo/>
+                            <h1>ToDoList</h1>
+                        </LogoWrapper>
+                        {isLoggedIn && <Button variant={'contained'} color={'secondary'} onClick={logoutHandler}>Log out</Button>}
+                    </AppBarInner>
+                </Container>
+            </StyledAppBar >
+            <Switch>
+                <Route exact path={'/'} render={() => <ToDoListPage demoMode={demoMode}/>}/>
+                <Route path={'/login'} render={() => <LoginPage/>}/>
+
+                <Route path={'/404'} render={() => <p>Make a 404 page my friend :)</p>}/>
+                <Redirect from={'*'} to={'/404'}/>
+            </Switch>
             <CustomizedSnackbars/>
         </div>
     )
 }
 
 // Styled components
-const Header = styled.header`
+const StyledAppBar = styled(AppBar)`
   position: relative;
   z-index: 100;
-  width: 100vw;
+
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
+  width: 100%;
   height: 100px;
+`
+
+const AppBarInner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  width: 100%;
+`
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const StyledSvgLogo = styled(SvgLogo)`
+  margin-right: 20px;
+  
+  width: 40px;
+  height: 40px;
+  
+  fill: ${({theme}) => theme.palette.grey[50]};
 `
 
 const LinearProgressStyled = styled(LinearProgress)`

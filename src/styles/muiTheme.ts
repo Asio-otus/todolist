@@ -1,24 +1,24 @@
 import {createMuiTheme} from "@material-ui/core";
 
 
+
 export const theme = createMuiTheme({
-    typography: {
-        fontFamily: `'Montserrat', san-serif`,
-    },
+    // typography: {
+    //     fontFamily: `'Montserrat', san-serif`,
+    // },
     palette: {
         primary: {
-            main: '#fd7029'
+            main: '#e5731b'
         },
         secondary: {
-            main: '#2e2f65'
+            main: '#4371be'
+        },
+        error: {
+            main: '#ba1212'
         }
     },
     shape: {
         borderRadius: 0
-    },
-    overrides: {
-        MuiTextField: {
-        }
     },
     props: {
         MuiTextField: {
@@ -31,5 +31,5 @@ export const theme = createMuiTheme({
         MuiButton: {
             variant: 'outlined'
         }
-    }
+    },
 })
