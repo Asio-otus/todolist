@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from 'react';
 import styled from 'styled-components';
 import {ToDoListPage} from "./pages/ToDoListPage/ToDoListPage";
-import {AppBar, Button, CircularProgress, LinearProgress} from "@material-ui/core";
+import {AppBar, Button, LinearProgress} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./bll/store";
 import {initializeApp, RequestStatusType} from "./bll/reducers/app-reducer";
@@ -11,6 +11,7 @@ import {CustomizedSnackbars} from "./components/_common/ErrorSnackbar/ErrorSnack
 import {logout} from "./bll/reducers/auth-reducer";
 import {Container} from "./components/_layout/Container";
 import {SvgLogo} from './components/_common/svg/SvgLogo';
+import {InitializationPage} from "./pages/InitializationPage/InitializationPage";
 
 // Component
 export const App: React.FC<PropsType> = ({demoMode = false}) => {
@@ -29,7 +30,7 @@ export const App: React.FC<PropsType> = ({demoMode = false}) => {
     }, [])
 
     if (!isInitialized) {
-        return <CircularProgress/>
+        return <InitializationPage/>
     }
 
 
