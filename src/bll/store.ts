@@ -1,9 +1,10 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {combineReducers} from "redux";
 import {todolistsReducer} from "./reducers/todolists-reducer";
 import {tasksReducer} from "./reducers/tasks-reducer";
 import thunk from "redux-thunk";
 import {appReducer} from "./reducers/app-reducer";
 import {authReducer} from "./reducers/auth-reducer";
+import {configureStore} from "@reduxjs/toolkit";
 
 // Redux
 const rootReducer = combineReducers({
@@ -13,7 +14,10 @@ const rootReducer = combineReducers({
     auth: authReducer
 })
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+export const store = configureStore({
+    reducer: rootReducer,
+    middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk)
+})
 
 // Types
 export type AppRootStateType = ReturnType<typeof rootReducer>

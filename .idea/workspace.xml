@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/InitializationPage/InitializationPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/src.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/muiTheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/muiTheme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/auth-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tasks-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/todolists-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_common/ErrorSnackbar/ErrorSnackbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_common/ErrorSnackbar/ErrorSnackbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ToDoListPage/ToDoListPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ToDoListPage/ToDoListPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +206,8 @@
       <workItem from="1616684723375" duration="14814000" />
       <workItem from="1617270629259" duration="644000" />
       <workItem from="1617800243311" duration="503000" />
-      <workItem from="1617974932496" duration="2033000" />
+      <workItem from="1617974932496" duration="2957000" />
+      <workItem from="1618211036667" duration="17661000" />
     </task>
     <servers />
   </component>

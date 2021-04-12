@@ -20,7 +20,7 @@ export function CustomizedSnackbars() {
             return;
         }
 
-        dispatch(setAppError(null))
+        dispatch(setAppError({error: null}))
     };
 
     const isOpen = error !== null

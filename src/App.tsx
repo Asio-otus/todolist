@@ -38,7 +38,7 @@ export const App: React.FC<PropsType> = ({demoMode = false}) => {
     return (
         <div>
             <StyledAppBar color={'primary'}>
-                {status === 'loading' && <LinearProgressStyled/>}
+                {status === 'loading' && <LinearProgressStyled color={'secondary'}/>}
                 <Container>
                     <AppBarInner>
                         <LogoWrapper>

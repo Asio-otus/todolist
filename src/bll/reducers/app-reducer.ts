@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../../api/todolist-api";
 import {setIsLoggedIn} from "./auth-reducer";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState: InitialStateType = {
     status: 'idle',
@@ -8,37 +9,35 @@ const initialState: InitialStateType = {
     isInitialized: false
 }
 
-// Reducer
-export const appReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
-    switch (action.type) {
-        case 'app/SET-STATUS':
-            return {...state, status: action.status}
-
-        case 'app/SET-ERROR':
-            return {...state, error: action.error}
-
-        case 'app/SET-INITIALIZED':
-            return {...state, isInitialized: action.isInitialized}
-
-        default:
-            return state
+const slice = createSlice({
+    name: 'app',
+    initialState: initialState,
+    reducers: {
+        setAppStatus(state, action: PayloadAction<{ status: RequestStatusType }>) {
+            state.status = action.payload.status
+        },
+        setAppError(state, action: PayloadAction<{ error: string | null }>) {
+            state.error = action.payload.error
+        },
+        setAppInitialized(state, action: PayloadAction<{isInitialized: boolean}>) {
+            state.isInitialized = action.payload.isInitialized
+        }
     }
-}
+})
 
-// Action creators
-export const setAppStatus = (status: RequestStatusType) => ({type: 'app/SET-STATUS', status} as const)
+// Reducer
+export const appReducer = slice.reducer
 
-export const setAppError = (error: string | null) => ({type: 'app/SET-ERROR', error} as const)
-
-export const setAppInitialized = (isInitialized: boolean) => ({type: 'app/SET-INITIALIZED', isInitialized} as const)
+// Actions
+export const {setAppStatus, setAppError, setAppInitialized} = slice.actions
 
 // Thunk creators
 export const initializeApp = () => (dispatch: Dispatch) => {
     authAPI.me().then(res => {
         if (res.data.resultCode === 0) {
-            dispatch(setIsLoggedIn(true))
+            dispatch(setIsLoggedIn({value: true}))
         }
-        dispatch(setAppInitialized(true))
+        dispatch(setAppInitialized({isInitialized: true}))
     })
 }
 
@@ -50,8 +49,3 @@ type InitialStateType = {
     error: string | null
     isInitialized: boolean
 }
-export type SetAppErrorActionType = ReturnType<typeof setAppError>
-export type SetAppStatusActionType = ReturnType<typeof setAppStatus>
-export type SetAppInitializedActionType = ReturnType<typeof setAppInitialized>
-
-type ActionsType = SetAppStatusActionType | SetAppErrorActionType | SetAppInitializedActionType
