@@ -44,7 +44,7 @@ export const initializeApp = () => (dispatch: Dispatch) => {
 // Types
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
-type InitialStateType = {
+export type InitialStateType = {
     status: RequestStatusType,
     error: string | null
     isInitialized: boolean

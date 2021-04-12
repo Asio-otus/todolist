@@ -25,7 +25,7 @@ const slice = createSlice({
         },
         changeToDoListFilter(state, action: PayloadAction<{ todolistId: string, filter: FilterValuesType }>) {
             const index = state.findIndex(tl => tl.id === action.payload.todolistId)
-            state[index].title = action.payload.filter
+            state[index].filter = action.payload.filter
         },
         changeToDoListEntityStatus(state, action: PayloadAction<{ todolistId: string, status: RequestStatusType }>) {
             const index = state.findIndex(tl => tl.id === action.payload.todolistId)

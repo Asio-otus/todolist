@@ -6,16 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/app-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/auth-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tasks-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tests/app-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tests/app-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tests/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tests/tasks-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-tasks-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/reducers/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/todolists-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/ErrorSnackbar/ErrorSnackbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_common/ErrorSnackbar/ErrorSnackbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ToDoListPage/ToDoListPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ToDoListPage/ToDoListPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,34 +67,8 @@
       <recent name="D:\Web\todolist\src\bll\reducers\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.correct todolist entity status should be changed">
-    <configuration name="correct error message should be set" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/bll/reducers/tests/app-reducer.test.ts" />
-      <test-names>
-        <test-name value="correct error message should be set" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="correct status should be set" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/bll/reducers/tests/app-reducer.test.ts" />
-      <test-names>
-        <test-name value="correct status should be set" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="correct todolist entity status should be changed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.todolists-tasks-reducer.test.ts">
+    <configuration name="correct filter of todolist should be changed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -107,43 +77,60 @@
       <scope-kind value="TEST" />
       <test-file value="$PROJECT_DIR$/src/bll/reducers/tests/todolists-reducer.test.ts" />
       <test-names>
-        <test-name value="correct todolist entity status should be changed" />
+        <test-name value="correct filter of todolist should be changed" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="ids should be equals" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="status of specified task should be changed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/bll/todolists-tasks-reducer.test.ts" />
+      <test-file value="$PROJECT_DIR$/src/bll/reducers/tests/tasks-reducer.test.ts" />
       <test-names>
-        <test-name value="ids should be equals" />
+        <test-name value="status of specified task should be changed" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="todolists should be set to the state" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="tasks-reducer.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/bll/todolists-reducer.test.ts" />
-      <test-names>
-        <test-name value="todolists should be set to the state" />
-      </test-names>
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/bll/reducers/tests/tasks-reducer.test.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="todolists-reducer.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/bll/reducers/tests/todolists-reducer.test.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="todolists-tasks-reducer.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/bll/reducers/tests/todolists-tasks-reducer.test.ts" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.correct todolist entity status should be changed" />
-        <item itemvalue="Jest.correct status should be set" />
-        <item itemvalue="Jest.correct error message should be set" />
-        <item itemvalue="Jest.ids should be equals" />
-        <item itemvalue="Jest.todolists should be set to the state" />
+        <item itemvalue="Jest.todolists-tasks-reducer.test.ts" />
+        <item itemvalue="Jest.todolists-reducer.test.ts" />
+        <item itemvalue="Jest.correct filter of todolist should be changed" />
+        <item itemvalue="Jest.tasks-reducer.test.ts" />
+        <item itemvalue="Jest.status of specified task should be changed" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +194,7 @@
       <workItem from="1617270629259" duration="644000" />
       <workItem from="1617800243311" duration="503000" />
       <workItem from="1617974932496" duration="2957000" />
-      <workItem from="1618211036667" duration="17661000" />
+      <workItem from="1618211036667" duration="19782000" />
     </task>
     <servers />
   </component>

@@ -5,14 +5,15 @@ let startState: InitialStateType
 beforeEach(() => {
     startState = {
         status: 'idle',
-        error: null
+        error: null,
+        isInitialized: false
     }
 })
 
 // setAppStatus
 test(`correct status should be set`, () => {
 
-    const endState = appReducer(startState, setAppStatus('loading'))
+    const endState = appReducer(startState, setAppStatus({status: 'loading'}))
 
     expect(endState.status).toBe('loading');
 })
@@ -20,7 +21,7 @@ test(`correct status should be set`, () => {
 // setAppError
 test(`correct error message should be set`, () => {
 
-    const endState = appReducer(startState, setAppError('Some error'))
+    const endState = appReducer(startState, setAppError({error: 'Some error'}))
 
     expect(endState.error).toBe('Some error');
 });
