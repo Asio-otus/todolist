@@ -2,7 +2,7 @@ import React from "react";
 import {Login} from "../../components/Login/Login";
 import {Redirect} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../bll/store";
+import {AppRootStateT} from "../../bll/store";
 import {Container} from "../../components/_layout/Container";
 import styled from "styled-components";
 
@@ -10,7 +10,7 @@ type PropsType = {}
 
 export const LoginPage: React.FC<PropsType> = () => {
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
+    const isLoggedIn = useSelector<AppRootStateT, boolean>(state => state.auth.isLoggedIn)
 
     if (isLoggedIn) {
         return <Redirect to={'/'}/>

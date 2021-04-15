@@ -5,7 +5,7 @@ import {tasksReducer} from "../bll/reducers/tasks-reducer";
 import {todolistsReducer} from "../bll/reducers/todolists-reducer";
 import {v1} from "uuid";
 import {TaskPriorities, TaskStatuses} from "../api/todolist-api";
-import {AppRootStateType} from "../bll/store";
+import {AppRootStateT} from "../bll/store";
 import {appReducer} from "../bll/reducers/app-reducer";
 import {MuiThemeProvider, StylesProvider} from "@material-ui/core/styles";
 import {ThemeProvider} from "styled-components";
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
     app: appReducer
 })
 
-const initialGlobalState: AppRootStateType = {
+const initialGlobalState: AppRootStateT = {
     todolists: [
         {id: 'todolistId1', title: 'What to learn', addedDate: '0', order: 0, filter: 'all', entityStatus: 'idle'},
         {id: 'todolistId2', title: 'What to buy', addedDate: '0', order: 0, filter: 'all', entityStatus: 'loading'}

@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import {appReducer} from "./reducers/app-reducer";
 import {authReducer} from "./reducers/auth-reducer";
 import {configureStore} from "@reduxjs/toolkit";
+import {useDispatch} from "react-redux";
 
 // Redux
 const rootReducer = combineReducers({
@@ -20,7 +21,11 @@ export const store = configureStore({
 })
 
 // Types
-export type AppRootStateType = ReturnType<typeof rootReducer>
+export type AppRootStateT = ReturnType<typeof rootReducer>
+export type AppDispatchT = typeof store.dispatch
+
+// Custom hooks
+export const useAppDispatch = () => useDispatch<AppDispatchT>()
 
 // Utilities
 // @ts-ignore

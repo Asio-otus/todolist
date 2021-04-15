@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../bll/store";
+import {AppRootStateT} from "../../bll/store";
 import {
     changeToDoListFilter,
     createToDoList,
@@ -22,9 +22,9 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
 
     // Connect
     const dispatch = useDispatch()
-    const todolists = useSelector<AppRootStateType, Array<ToDoListDomainType>>(state => state.todolists)
-    const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
+    const todolists = useSelector<AppRootStateT, Array<ToDoListDomainType>>(state => state.todolists)
+    const tasks = useSelector<AppRootStateT, TasksStateType>(state => state.tasks)
+    const isLoggedIn = useSelector<AppRootStateT, boolean>(state => state.auth.isLoggedIn)
 
     // Side effects
     useEffect(() => {
@@ -47,7 +47,7 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
     }, [])
 
     const removeTask = useCallback((taskId: string, toDoListId: string) => {
-        dispatch(deleteTask(taskId, toDoListId))
+        dispatch(deleteTask({taskId, toDoListId}))
     }, [])
 
     const removeToDoList = useCallback((todolistId: string) => {

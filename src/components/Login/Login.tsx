@@ -1,13 +1,19 @@
 import React from "react";
-import {FormControl, FormControlLabel, FormLabel, Checkbox, TextField, Button} from "@material-ui/core";
-import {useFormik} from "formik";
-import {useDispatch} from "react-redux";
+import {Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
+import {FormikHelpers, useFormik} from "formik";
 import {login} from "../../bll/reducers/auth-reducer";
 import styled from "styled-components";
+import {AppDispatchT, useAppDispatch} from "../../bll/store";
 
 type PropsType = {}
 
-type FormikErrorType = {
+type FormikValueT = {
+    email: string
+    password: string
+    rememberMe: boolean
+}
+
+type FormikErrorT = {
     email?: string
     password?: string
     rememberMe?: boolean
@@ -15,12 +21,12 @@ type FormikErrorType = {
 
 export const Login: React.FC<PropsType> = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const formik = useFormik({
 
         validate: (values) => {
-            const errors: FormikErrorType = {}
+            const errors: FormikErrorT = {}
             if (!values.email) {
                 errors.email = 'Email is required'
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -38,8 +44,15 @@ export const Login: React.FC<PropsType> = () => {
             password: '',
             rememberMe: false
         },
-        onSubmit: values => {
-            dispatch(login(values))
+        onSubmit: async (values, formikHelpers: FormikHelpers<FormikValueT>) => {
+            const action = await dispatch(login(values))
+
+            if (login.rejected.match(action)) {
+                if (action.payload?.fieldsErrors?.length) {
+                    const error = action.payload?.fieldsErrors[0]
+                    formikHelpers.setFieldError(error.field, error.error)
+                }
+            }
         }
     })
 

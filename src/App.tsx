@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {ToDoListPage} from "./pages/ToDoListPage/ToDoListPage";
 import {AppBar, Button, LinearProgress} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "./bll/store";
+import {AppRootStateT} from "./bll/store";
 import {initializeApp, RequestStatusType} from "./bll/reducers/app-reducer";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {LoginPage} from "./pages/LoginPage/LoginPage";
@@ -16,9 +16,9 @@ import {InitializationPage} from "./pages/InitializationPage/InitializationPage"
 // Component
 export const App: React.FC<PropsType> = ({demoMode = false}) => {
 
-    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
-    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
+    const status = useSelector<AppRootStateT, RequestStatusType>(state => state.app.status)
+    const isInitialized = useSelector<AppRootStateT, boolean>(state => state.app.isInitialized)
+    const isLoggedIn = useSelector<AppRootStateT, boolean>(state => state.auth.isLoggedIn)
     const dispatch = useDispatch()
 
     useEffect(() => {
