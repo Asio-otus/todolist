@@ -1,8 +1,16 @@
-import {Dispatch} from "redux";
 import {authAPI} from "../../api/todolist-api";
 import {setIsLoggedIn} from "./auth-reducer";
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
+// Thunk
+export const initializeApp = createAsyncThunk('app/initializeApp', async (param, {dispatch}) => {
+    const res = await authAPI.me()
+    if (res.data.resultCode === 0) {
+        dispatch(setIsLoggedIn({value: true}))
+    }
+})
+
+// Slice
 const initialState: InitialStateType = {
     status: 'idle',
     error: null,
@@ -19,9 +27,11 @@ const slice = createSlice({
         setAppError(state, action: PayloadAction<{ error: string | null }>) {
             state.error = action.payload.error
         },
-        setAppInitialized(state, action: PayloadAction<{isInitialized: boolean}>) {
-            state.isInitialized = action.payload.isInitialized
-        }
+    },
+    extraReducers: builder => {
+        builder.addCase(initializeApp.fulfilled, (state) => {
+            state.isInitialized = true
+        })
     }
 })
 
@@ -29,17 +39,7 @@ const slice = createSlice({
 export const appReducer = slice.reducer
 
 // Actions
-export const {setAppStatus, setAppError, setAppInitialized} = slice.actions
-
-// Thunk creators
-export const initializeApp = () => (dispatch: Dispatch) => {
-    authAPI.me().then(res => {
-        if (res.data.resultCode === 0) {
-            dispatch(setIsLoggedIn({value: true}))
-        }
-        dispatch(setAppInitialized({isInitialized: true}))
-    })
-}
+export const {setAppStatus, setAppError} = slice.actions
 
 // Types
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'

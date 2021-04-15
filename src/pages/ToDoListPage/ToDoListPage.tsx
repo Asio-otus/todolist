@@ -9,7 +9,7 @@ import {
     ToDoListDomainType,
     updateToDoListTitle
 } from "../../bll/reducers/todolists-reducer";
-import {createTask, deleteTask, TasksStateType, updateTaskTC} from "../../bll/reducers/tasks-reducer";
+import {createTask, deleteTask, TasksStateType, updateTask} from "../../bll/reducers/tasks-reducer";
 import React, {useCallback, useEffect} from "react";
 import {TaskStatuses} from "../../api/todolist-api";
 import {ToDoList} from "../../components/ToDoList/ToDoList";
@@ -35,15 +35,15 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
 
     // Callbacks
     const addTodoList = useCallback((title: string) => {
-        dispatch(createToDoList(title))
+        dispatch(createToDoList({title}))
     }, [])
 
     const addTask = useCallback((title: string, todolistId: string) => {
-        dispatch(createTask(title, todolistId))
+        dispatch(createTask({title, todolistId}))
     }, [])
 
     const changeTaskStatus = useCallback((taskId: string, status: TaskStatuses, todolistId: string) => {
-        dispatch(updateTaskTC(taskId, {status}, todolistId))
+        dispatch(updateTask({taskId, model: {status}, todolistId}))
     }, [])
 
     const removeTask = useCallback((taskId: string, toDoListId: string) => {
@@ -51,7 +51,7 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
     }, [])
 
     const removeToDoList = useCallback((todolistId: string) => {
-        dispatch(deleteToDoList(todolistId))
+        dispatch(deleteToDoList({todolistId}))
     }, [])
 
     const changeFilter = useCallback((todolistId: string, filter: FilterValuesType) => {
@@ -59,11 +59,11 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
     }, [])
 
     const changeTaskTitle = useCallback((taskId: string, title: string, todolistId: string) => {
-        dispatch(updateTaskTC(taskId, {title}, todolistId))
+        dispatch(updateTask({taskId, model: {title}, todolistId}))
     }, [])
 
-    const changeTodoListTitle = useCallback((todoListId: string, title: string) => {
-        dispatch(updateToDoListTitle(todoListId, title))
+    const changeTodoListTitle = useCallback((todolistId: string, title: string) => {
+        dispatch(updateToDoListTitle({todolistId, title}))
     }, [])
 
     if (!isLoggedIn) {
