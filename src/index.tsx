@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import {store} from "./bll/store";
 import {MuiThemeProvider, StylesProvider} from '@material-ui/core/styles';
 import {ThemeProvider} from "styled-components";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import {CssBaseline} from "@material-ui/core";
 import {theme} from "./styles/muiTheme";
 
@@ -16,9 +16,9 @@ ReactDOM.render(
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Provider store={store}>
-                    <BrowserRouter>
+                    <HashRouter>
                         <App/>
-                    </BrowserRouter>
+                    </HashRouter>
                 </Provider>
             </ThemeProvider>
         </MuiThemeProvider>

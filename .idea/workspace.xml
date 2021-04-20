@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="69306eec-8ef8-4886-9445-65e3543a8230" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/app-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/auth-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tasks-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tests/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tests/tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/tests/todolists-tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/reducers/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/reducers/todolists-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ToDoListPage/ToDoListPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ToDoListPage/ToDoListPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +192,9 @@
       <workItem from="1617974932496" duration="2957000" />
       <workItem from="1618211036667" duration="20614000" />
       <workItem from="1618474431177" duration="25535000" />
-      <workItem from="1618505133691" duration="334000" />
+      <workItem from="1618505133691" duration="569000" />
+      <workItem from="1618911694574" duration="689000" />
+      <workItem from="1618932938224" duration="1234000" />
     </task>
     <servers />
   </component>
