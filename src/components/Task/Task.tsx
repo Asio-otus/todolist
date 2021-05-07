@@ -2,14 +2,12 @@ import React, {ChangeEvent, useCallback} from "react";
 import {Checkbox, IconButton} from "@material-ui/core";
 import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
-import {TaskStatuses, TaskType} from "../../api/todolist-api";
+import {TaskStatuses, TaskT} from "../../api/todolist-api";
 import styled from "styled-components";
-import {RequestStatusType} from "../../bll/reducers/app-reducer";
+import {RequestStatusT} from "../../bll/reducers/app-reducer";
 
-// Component
-export const Task = React.memo((props: TaskPropsType) => {
+export const Task = React.memo((props: TaskPropsT) => {
 
-    // Callbacks
     const removeTask = useCallback(() => {
         props.removeTask(props.task.id, props.toDoListId)
     }, [])
@@ -22,7 +20,6 @@ export const Task = React.memo((props: TaskPropsType) => {
         props.changeTaskTitle(props.task.id, title, props.toDoListId)
     }, [])
 
-    // Render
     return (
         <ComponentWrapper key={props.task.id}>
             <CheckboxStyled
@@ -42,7 +39,7 @@ export const Task = React.memo((props: TaskPropsType) => {
     )
 })
 
-// Styled components
+// Styles
 const ComponentWrapper = styled.div`
   position: relative;
 
@@ -76,10 +73,10 @@ const IconButtonStyled = styled(IconButton)`
 `
 
 // Types
-export type TaskPropsType = {
-    task: TaskType
+export type TaskPropsT = {
+    task: TaskT
     toDoListId: string
-    toDoListEntityStatus: RequestStatusType
+    toDoListEntityStatus: RequestStatusT
     changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
     changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
     removeTask: (taskId: string, todolistId: string) => void

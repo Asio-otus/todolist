@@ -11,7 +11,7 @@ import {MuiThemeProvider, StylesProvider} from "@material-ui/core/styles";
 import {ThemeProvider} from "styled-components";
 import thunk from "redux-thunk";
 import {BrowserRouter} from "react-router-dom";
-import {theme} from "../styles/muiTheme";
+import {theme} from "../styles/theme";
 import {CssBaseline} from "@material-ui/core";
 
 const rootReducer = combineReducers({

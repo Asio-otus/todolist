@@ -1,14 +1,14 @@
 import {v1} from 'uuid';
 import {
     changeToDoListEntityStatus, changeToDoListFilter, createToDoList, deleteToDoList,
-    fetchToDoLists, FilterValuesType, ToDoListDomainType,
+    fetchToDoLists, FilterValuesType, ToDoListDomainT,
     todolistsReducer, updateToDoListTitle
 } from '../todolists-reducer';
-import {RequestStatusType} from "../app-reducer";
+import {RequestStatusT} from "../app-reducer";
 
 let todolistId1 = v1();
 let todolistId2 = v1();
-let startState: Array<ToDoListDomainType> = []
+let startState: Array<ToDoListDomainT> = []
 
 beforeEach(() => {
     todolistId1 = v1();
@@ -76,7 +76,7 @@ test(`correct filter of todolist should be changed`, () => {
 // changeTodolistFilter
 test(`correct todolist entity status should be changed`, () => {
 
-    let newStatus: RequestStatusType = 'succeeded';
+    let newStatus: RequestStatusT = 'succeeded';
 
     const endState = todolistsReducer(startState, changeToDoListEntityStatus({
         todolistId: todolistId2,

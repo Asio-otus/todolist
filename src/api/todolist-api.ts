@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {RequestStatusType} from "../bll/reducers/app-reducer";
+import {RequestStatusT} from "../bll/reducers/app-reducer";
 
 // Instance of axios
 const instance = axios.create ({
@@ -28,10 +28,10 @@ export const todolistAPI = {
         return instance.get<ResponseTasksType>(`/todo-lists/${todolistId}/tasks`)
     },
     createTask(todolistId: string, title: string) {
-        return instance.post<ResponseType<{item: TaskType}>>(`/todo-lists/${todolistId}/tasks`, {title})
+        return instance.post<ResponseType<{item: TaskT}>>(`/todo-lists/${todolistId}/tasks`, {title})
     },
     updateTask(todolistId: string, taskId: string, model: UpdateTaskModelType) {
-        return instance.put<ResponseType<{item: TaskType}>>(`/todo-lists/${todolistId}/tasks/${taskId}`, model)
+        return instance.put<ResponseType<{item: TaskT}>>(`/todo-lists/${todolistId}/tasks/${taskId}`, model)
     },
     deleteTask(todolistId: string, taskId: string) {
         return instance.delete<ResponseType>(`/todo-lists/${todolistId}/tasks/${taskId}`)
@@ -73,7 +73,7 @@ export enum TaskPriorities {
     Later = 4
 }
 
-export type TaskType = {
+export type TaskT = {
     description: string
     title: string
     status: TaskStatuses
@@ -84,7 +84,7 @@ export type TaskType = {
     todoListId: string
     order: number
     addedDate: string
-    entityStatus: RequestStatusType
+    entityStatus: RequestStatusT
 }
 
 export type UpdateTaskModelType = {
@@ -107,7 +107,7 @@ export type ResponseType<D = {}> = {
 type ResponseTasksType = {
     totalCount: number
     error: string
-    items: Array<TaskType>
+    items: Array<TaskT>
 }
 
 export type LoginParamsType = {

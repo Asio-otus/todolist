@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
 import {App} from "./App";
 import {Provider} from "react-redux";
 import {store} from "./bll/store";
@@ -8,7 +7,7 @@ import {MuiThemeProvider, StylesProvider} from '@material-ui/core/styles';
 import {ThemeProvider} from "styled-components";
 import {HashRouter} from "react-router-dom";
 import {CssBaseline} from "@material-ui/core";
-import {theme} from "./styles/muiTheme";
+import {theme} from "./styles/theme";
 
 ReactDOM.render(
     <StylesProvider injectFirst>
@@ -23,9 +22,4 @@ ReactDOM.render(
             </ThemeProvider>
         </MuiThemeProvider>
     </StylesProvider>, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
 

@@ -1,11 +1,6 @@
 import {createMuiTheme} from "@material-ui/core";
 
-
-
 export const theme = createMuiTheme({
-    // typography: {
-    //     fontFamily: `'Montserrat', san-serif`,
-    // },
     palette: {
         primary: {
             main: '#e5731b'

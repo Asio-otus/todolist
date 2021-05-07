@@ -6,7 +6,7 @@ import {
     deleteToDoList,
     fetchToDoLists,
     FilterValuesType,
-    ToDoListDomainType,
+    ToDoListDomainT,
     updateToDoListTitle
 } from "../../bll/reducers/todolists-reducer";
 import {createTask, deleteTask, TasksStateType, updateTask} from "../../bll/reducers/tasks-reducer";
@@ -18,22 +18,19 @@ import styled from "styled-components";
 import {Container} from "../../components/_layout/Container";
 import {Redirect} from "react-router-dom";
 
-export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
+export const ToDoListPage: React.FC<PropsT> = ({demoMode = false}) => {
 
-    // Connect
     const dispatch = useDispatch()
-    const todolists = useSelector<AppRootStateT, Array<ToDoListDomainType>>(state => state.todolists)
+    const todolists = useSelector<AppRootStateT, Array<ToDoListDomainT>>(state => state.todolists)
     const tasks = useSelector<AppRootStateT, TasksStateType>(state => state.tasks)
     const isLoggedIn = useSelector<AppRootStateT, boolean>(state => state.auth.isLoggedIn)
 
-    // Side effects
     useEffect(() => {
         if (!demoMode || !isLoggedIn) {
             dispatch(fetchToDoLists())
         }
     }, [])
 
-    // Callbacks
     const addTodoList = useCallback((title: string) => {
         dispatch(createToDoList({title}))
     }, [])
@@ -104,7 +101,7 @@ export const ToDoListPage: React.FC<PropsType> = ({demoMode = false}) => {
 }
 
 
-// Styled components
+// Styles
 const ItemFormContainer = styled.header`
   display: flex;
   justify-content: center;
@@ -148,7 +145,7 @@ const TodolistContainer = styled.div`
   }
 `
 
-// Type
-type PropsType = {
+// Types
+type PropsT = {
     demoMode?: boolean
 }

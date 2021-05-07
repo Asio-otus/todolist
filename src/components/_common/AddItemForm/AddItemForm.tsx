@@ -4,14 +4,11 @@ import {IconButton, TextField} from "@material-ui/core";
 import {TextFieldProps} from "@material-ui/core/TextField/TextField";
 import styled from "styled-components";
 
-// Component
 export const AddItemForm = React.memo(({addItem, disabled = false, ...props}: AddItemFormPropsType) => {
 
-    // Local state
     const [title, setTitle] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
 
-    // Local functions
     const addItemHandler = () => {
         const itemTitle = title.trim()
         if (itemTitle) {

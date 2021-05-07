@@ -2,15 +2,11 @@ import React, {ChangeEvent, useState} from "react";
 import {TextField} from "@material-ui/core";
 import styled from "styled-components";
 
-// Component
 export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
 
-    // Local state
     const [editMode, setEditMode] = useState<boolean>(false)
     const [title, setTitle] = useState<string>(props.title)
 
-
-    // Local functions
     const onEditMode = () => {
         if (!props.disabled) {
             setEditMode(true)

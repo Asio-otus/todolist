@@ -3,15 +3,15 @@ import {AddItemForm} from "../_common/AddItemForm/AddItemForm";
 import {EditableSpan} from "../_common/EditableSpan/EditableSpan";
 import {Delete} from "@material-ui/icons";
 import {Button, Card, IconButton} from "@material-ui/core";
-import {FilterValuesType, ToDoListDomainType} from "../../bll/reducers/todolists-reducer";
+import {FilterValuesType, ToDoListDomainT} from "../../bll/reducers/todolists-reducer";
 import {Task} from "../Task/Task";
-import {TaskStatuses, TaskType} from "../../api/todolist-api";
+import {TaskStatuses, TaskT} from "../../api/todolist-api";
 import {useDispatch} from "react-redux";
 import {fetchTasks} from "../../bll/reducers/tasks-reducer";
 import styled from "styled-components";
 
 // Component
-export const ToDoList = React.memo(({demoMode = false, ...props}: PropsType) => {
+export const ToDoList = React.memo(({demoMode = false, ...props}: PropsT) => {
 
     // Connect
     const dispatch = useDispatch()
@@ -167,9 +167,9 @@ const TaskWrapper = styled.div`
 `
 
 // Types
-type PropsType = {
-    todolist: ToDoListDomainType
-    tasks: Array<TaskType>
+type PropsT = {
+    todolist: ToDoListDomainT
+    tasks: Array<TaskT>
     addTask: (todolistId: string, title: string) => void
     changeFilter: (todolistId: string, filterValue: FilterValuesType) => void
     removeTodolist: (todolistId: string) => void

@@ -1,6 +1,6 @@
 import {createTask, deleteTask, fetchTasks, tasksReducer, TasksStateType, updateTask} from '../tasks-reducer';
 import {createToDoList, deleteToDoList, fetchToDoLists} from "../todolists-reducer";
-import {TaskPriorities, TaskStatuses, TaskType} from "../../../api/todolist-api";
+import {TaskPriorities, TaskStatuses, TaskT} from "../../../api/todolist-api";
 
 let startState: TasksStateType = {}
 beforeEach(() => {
@@ -178,7 +178,7 @@ test(`correct task should be deleted from correct array`, () => {
 // addTask
 test('correct task should be added to correct array', () => {
 
-    const newTask: TaskType = {
+    const newTask: TaskT = {
             description: '',
             title: 'juice',
             status: TaskStatuses.New,

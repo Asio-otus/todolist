@@ -1,14 +1,12 @@
 import React from "react";
-import {Login} from "../../components/Login/Login";
+import {Auth} from "../../components/Auth/Auth";
 import {Redirect} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {AppRootStateT} from "../../bll/store";
 import {Container} from "../../components/_layout/Container";
 import styled from "styled-components";
 
-type PropsType = {}
-
-export const LoginPage: React.FC<PropsType> = () => {
+export const LoginPage: React.FC = () => {
 
     const isLoggedIn = useSelector<AppRootStateT, boolean>(state => state.auth.isLoggedIn)
 
@@ -20,13 +18,14 @@ export const LoginPage: React.FC<PropsType> = () => {
         <LoginPageWrapper>
             <Container>
                 <LoginFormWrapper>
-                    <Login/>
+                    <Auth/>
                 </LoginFormWrapper>
             </Container>
         </LoginPageWrapper>
     )
 }
 
+// Styles
 const LoginPageWrapper = styled.div`
   height: calc(100vh - 100px);
 `

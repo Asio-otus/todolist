@@ -1,7 +1,7 @@
 import {createToDoList, deleteToDoList, fetchToDoLists} from "./todolists-reducer";
-import {TaskPriorities, TaskStatuses, TaskType, todolistAPI, UpdateTaskModelType} from "../../api/todolist-api";
+import {TaskPriorities, TaskStatuses, TaskT, todolistAPI, UpdateTaskModelType} from "../../api/todolist-api";
 import {AppRootStateT} from "../store";
-import {RequestStatusType, setAppStatus} from "./app-reducer";
+import {RequestStatusT, setAppStatus} from "./app-reducer";
 import {handleServerAppError, handleServerNetworkError} from "../../utils/error-utils";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
@@ -100,7 +100,7 @@ const slice = createSlice({
     name: 'tasks',
     initialState: initialState,
     reducers: {
-        setTaskEntityStatus(state, action: PayloadAction<{ taskId: string, todolistId: string, status: RequestStatusType }>) {
+        setTaskEntityStatus(state, action: PayloadAction<{ taskId: string, todolistId: string, status: RequestStatusT }>) {
             const tasks = state[action.payload.todolistId]
             const index = tasks.findIndex(t => t.id === action.payload.taskId)
             if (index > -1) {
@@ -152,7 +152,7 @@ export const {setTaskEntityStatus} = slice.actions
 
 // Types
 export type TasksStateType = {
-    [key: string]: Array<TaskType>
+    [key: string]: Array<TaskT>
 }
 
 type UpdateDomainTaskModelType = {

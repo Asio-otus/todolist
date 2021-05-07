@@ -5,11 +5,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateT} from "../../../bll/store";
 import {setAppError} from "../../../bll/reducers/app-reducer";
 
-function Alert(props: AlertProps) {
+const Alert = (props: AlertProps) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export function CustomizedSnackbars() {
+export const CustomizedSnackbars = () => {
 
     const error = useSelector<AppRootStateT, string | null>(state => state.app.error)
     const dispatch = useDispatch()
@@ -33,9 +33,3 @@ export function CustomizedSnackbars() {
         </Snackbar>
     );
 }
-
-// Cheat shit for severity
-// <Alert severity="error">This is an error message!</Alert>
-// <Alert severity="warning">This is a warning message!</Alert>
-// <Alert severity="info">This is an information message!</Alert>
-// <Alert severity="success">This is a success message!</Alert>

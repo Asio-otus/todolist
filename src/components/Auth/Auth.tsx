@@ -3,23 +3,9 @@ import {Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {FormikHelpers, useFormik} from "formik";
 import {login} from "../../bll/reducers/auth-reducer";
 import styled from "styled-components";
-import {AppDispatchT, useAppDispatch} from "../../bll/store";
+import {useAppDispatch} from "../../bll/store";
 
-type PropsType = {}
-
-type FormikValueT = {
-    email: string
-    password: string
-    rememberMe: boolean
-}
-
-type FormikErrorT = {
-    email?: string
-    password?: string
-    rememberMe?: boolean
-}
-
-export const Login: React.FC<PropsType> = () => {
+export const Auth: React.FC<PropsT> = () => {
 
     const dispatch = useAppDispatch()
 
@@ -85,6 +71,7 @@ export const Login: React.FC<PropsType> = () => {
     )
 }
 
+// Styles
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -100,5 +87,21 @@ const TextFieldWrapper = styled.div`
 const FormError = styled.div`
   position: absolute;
   bottom: -23px;
+  
   color: ${({theme}) => theme.palette.error.main};
 `
+
+// Types
+type PropsT = {}
+
+type FormikValueT = {
+    email: string
+    password: string
+    rememberMe: boolean
+}
+
+type FormikErrorT = {
+    email?: string
+    password?: string
+    rememberMe?: boolean
+}

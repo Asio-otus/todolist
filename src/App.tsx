@@ -4,7 +4,7 @@ import {ToDoListPage} from "./pages/ToDoListPage/ToDoListPage";
 import {AppBar, Button, LinearProgress} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateT} from "./bll/store";
-import {initializeApp, RequestStatusType} from "./bll/reducers/app-reducer";
+import {initializeApp, RequestStatusT} from "./bll/reducers/app-reducer";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {LoginPage} from "./pages/LoginPage/LoginPage";
 import {CustomizedSnackbars} from "./components/_common/ErrorSnackbar/ErrorSnackbar";
@@ -13,12 +13,13 @@ import {Container} from "./components/_layout/Container";
 import {SvgLogo} from './components/_common/svg/SvgLogo';
 import {InitializationPage} from "./pages/InitializationPage/InitializationPage";
 
-// Component
-export const App: React.FC<PropsType> = ({demoMode = false}) => {
 
-    const status = useSelector<AppRootStateT, RequestStatusType>(state => state.app.status)
+export const App: React.FC<PropsT> = ({demoMode = false}) => {
+
+    const status = useSelector<AppRootStateT, RequestStatusT>(state => state.app.status)
     const isInitialized = useSelector<AppRootStateT, boolean>(state => state.app.isInitialized)
     const isLoggedIn = useSelector<AppRootStateT, boolean>(state => state.auth.isLoggedIn)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -33,8 +34,6 @@ export const App: React.FC<PropsType> = ({demoMode = false}) => {
         return <InitializationPage/>
     }
 
-
-    // Render
     return (
         <div>
             <StyledAppBar color={'primary'}>
@@ -61,7 +60,7 @@ export const App: React.FC<PropsType> = ({demoMode = false}) => {
     )
 }
 
-// Styled components
+// Styles
 const StyledAppBar = styled(AppBar)`
   position: relative;
   z-index: 100;
@@ -103,6 +102,6 @@ const LinearProgressStyled = styled(LinearProgress)`
 `
 
 // Types
-type PropsType = {
+type PropsT = {
     demoMode?: boolean
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import {Task, TaskPropsType} from "./Task";
+import {Task, TaskPropsT} from "./Task";
 import {Meta, Story} from "@storybook/react/types-6-0";
 import {action} from "@storybook/addon-actions";
 import {TaskPriorities, TaskStatuses} from "../../api/todolist-api";
@@ -16,7 +16,7 @@ const changeTaskStatusCallback = action('Status changed')
 const changeTaskTitleCallback = action('Title changed')
 const removeTaskCallback = action('Task removed')
 
-const Template: Story<TaskPropsType> = (args) => <Task {...args}/>
+const Template: Story<TaskPropsT> = (args) => <Task {...args}/>
 
 const baseArgs = {
     changeTaskStatus: changeTaskStatusCallback,
