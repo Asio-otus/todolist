@@ -1,9 +1,9 @@
 import {combineReducers} from "redux";
-import {todolistsReducer} from "./reducers/todolists-reducer";
-import {tasksReducer} from "./reducers/tasks-reducer";
+import {todolistsReducer} from "../feature/todolist/bll/todolists-reducer";
+import {tasksReducer} from "../feature/todolist/bll/tasks-reducer";
 import thunk from "redux-thunk";
-import {appReducer} from "./reducers/app-reducer";
-import {authReducer} from "./reducers/auth-reducer";
+import {appReducer} from "../feature/application/bll/app-reducer";
+import {authReducer} from "../feature/auth/bll/auth-reducer";
 import {configureStore} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
 
@@ -27,6 +27,3 @@ export type AppDispatchT = typeof store.dispatch
 // Custom hooks
 export const useAppDispatch = () => useDispatch<AppDispatchT>()
 
-// Utilities
-// @ts-ignore
-window.store = store;

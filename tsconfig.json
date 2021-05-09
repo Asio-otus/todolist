@@ -21,6 +21,6 @@
   },
   "include": [
     "src",
-    "src/components/ToDoList/ToDoList.tsx"
+    "src/feature/todolist/components/Todolist.tsx"
   ]
 }

@@ -4,7 +4,7 @@ import {ReduxStoreProviderDecorator} from "./storybook/ReduxStoreProviderDecorat
 import {Meta, Story} from "@storybook/react/types-6-0";
 
 export default {
-    title: 'Todolist/App',
+    title: 'todolist/App',
     component: App,
     argTypes: {},
     decorators: [ReduxStoreProviderDecorator]

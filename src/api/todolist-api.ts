@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {RequestStatusT} from "../bll/reducers/app-reducer";
+import {RequestStatusT} from "../feature/application/bll/app-reducer";
 
 // Instance of axios
 const instance = axios.create ({

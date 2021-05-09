@@ -1,12 +1,12 @@
 import React from "react";
 import {Provider} from "react-redux";
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import {tasksReducer} from "../bll/reducers/tasks-reducer";
-import {todolistsReducer} from "../bll/reducers/todolists-reducer";
+import {tasksReducer} from "../feature/todolist/bll/tasks-reducer";
+import {todolistsReducer} from "../feature/todolist/bll/todolists-reducer";
 import {v1} from "uuid";
 import {TaskPriorities, TaskStatuses} from "../api/todolist-api";
 import {AppRootStateT} from "../bll/store";
-import {appReducer} from "../bll/reducers/app-reducer";
+import {appReducer} from "../feature/application/bll/app-reducer";
 import {MuiThemeProvider, StylesProvider} from "@material-ui/core/styles";
 import {ThemeProvider} from "styled-components";
 import thunk from "redux-thunk";

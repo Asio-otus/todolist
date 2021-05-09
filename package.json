@@ -43,7 +43,7 @@
     "build-storybook": "build-storybook -s public",
     "jest:integration": "jest -c integration/jest.config.js",
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
-    "svg-jsx": "npx @svgr/cli src/assets/svg/ --ignore-existing --out-dir src/components/_common/svg --svgo-config src/svgo.json --typescript"
+    "svg-jsx": "npx @svgr/cli src/assets/svg/ --ignore-existing --out-dir src/feature/_shared/svg --svgo-config src/svgo.json --typescript"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,4 +1,4 @@
-import {setAppError, setAppStatus} from "../bll/reducers/app-reducer";
+import {setAppError, setAppStatus} from "../feature/application/bll/app-reducer";
 import {ResponseType} from '../api/todolist-api'
 import {Dispatch} from "redux";
 

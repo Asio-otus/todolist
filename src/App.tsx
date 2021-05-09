@@ -1,24 +1,25 @@
 import React, {useCallback, useEffect} from 'react';
 import styled from 'styled-components';
-import {ToDoListPage} from "./pages/ToDoListPage/ToDoListPage";
+import {TodolistPage} from "./feature/todolist/pages/TodolistPage";
 import {AppBar, Button, LinearProgress} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateT} from "./bll/store";
-import {initializeApp, RequestStatusT} from "./bll/reducers/app-reducer";
+import {initializeApp} from "./feature/application/bll/app-reducer";
 import {Redirect, Route, Switch} from 'react-router-dom';
-import {LoginPage} from "./pages/LoginPage/LoginPage";
-import {CustomizedSnackbars} from "./components/_common/ErrorSnackbar/ErrorSnackbar";
-import {logout} from "./bll/reducers/auth-reducer";
-import {Container} from "./components/_layout/Container";
-import {SvgLogo} from './components/_common/svg/SvgLogo';
-import {InitializationPage} from "./pages/InitializationPage/InitializationPage";
+import {LoginPage} from "./feature/auth/pages/LoginPage";
+import {CustomizedSnackbars} from "./feature/_shared/components/ErrorSnackbar/ErrorSnackbar";
+import {logout} from "./feature/auth/bll/auth-reducer";
+import {Container} from "./feature/_shared/_layout/Container";
+import {SvgLogo} from './feature/_shared/svg/SvgLogo';
+import {InitializationPage} from "./feature/application/pages/InitializationPage";
+import {selectIsInitialized, selectStatus} from "./feature/application/bll/app-selectors";
+import {selectIsLoggedIn} from "./feature/auth/bll/auth-selectors";
 
 
 export const App: React.FC<PropsT> = ({demoMode = false}) => {
 
-    const status = useSelector<AppRootStateT, RequestStatusT>(state => state.app.status)
-    const isInitialized = useSelector<AppRootStateT, boolean>(state => state.app.isInitialized)
-    const isLoggedIn = useSelector<AppRootStateT, boolean>(state => state.auth.isLoggedIn)
+    const status = useSelector(selectStatus)
+    const isInitialized = useSelector(selectIsInitialized)
+    const isLoggedIn = useSelector(selectIsLoggedIn)
 
     const dispatch = useDispatch()
 
@@ -49,8 +50,8 @@ export const App: React.FC<PropsT> = ({demoMode = false}) => {
                 </Container>
             </StyledAppBar >
             <Switch>
-                <Route exact path={'/'} render={() => <ToDoListPage demoMode={demoMode}/>}/>
-                <Route path={'/login'} render={() => <LoginPage/>}/>
+                <Route exact path={'/'} render={() => <TodolistPage demoMode={demoMode}/>}/>
+                <Route path={'/auth'} render={() => <LoginPage/>}/>
 
                 <Route path={'/404'} render={() => <p>Make a 404 page my friend :)</p>}/>
                 <Redirect from={'*'} to={'/404'}/>
