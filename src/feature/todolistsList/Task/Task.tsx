@@ -9,7 +9,7 @@ import {RequestStatusT} from "../../../app/app-reducer";
 export const Task = React.memo((props: TaskPropsT) => {
 
     const removeTask = useCallback(() => {
-        props.removeTask(props.task.id, props.toDoListId)
+        props.removeTask({taskId: props.task.id, todolistId: props.toDoListId})
     }, [])
 
     const changeStatus = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -79,5 +79,5 @@ export type TaskPropsT = {
     toDoListEntityStatus: RequestStatusT
     changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
     changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
-    removeTask: (taskId: string, todolistId: string) => void
+    removeTask: (param: {taskId: string, todolistId: string}) => void
 }

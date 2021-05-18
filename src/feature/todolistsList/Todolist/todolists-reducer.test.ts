@@ -1,8 +1,8 @@
 import {v1} from 'uuid';
 import {
-    changeToDoListEntityStatus, changeToDoListFilter, addTodolistTC, removeTodolistTC,
-    fetchTodolistsTC, FilterValuesT, ToDoListDomainT,
-    todolistsReducer, updateTodolistTitleTC
+    changeToDoListEntityStatus, changeTodolistFilter, addTodolist, removeTodolist,
+    fetchTodolists, FilterValuesT, ToDoListDomainT,
+    todolistsReducer, updateTodolistTitle
 } from './todolists-reducer';
 import {RequestStatusT} from "../../application/bll/app-reducer";
 
@@ -67,7 +67,7 @@ test(`correct filter of todolist should be changed`, () => {
 
     let newFilter: FilterValuesT = 'completed';
 
-    const endState = todolistsReducer(startState, changeToDoListFilter({todolistId: todolistId2, filter: newFilter}));
+    const endState = todolistsReducer(startState, changeTodolistFilter({todolistId: todolistId2, filter: newFilter}));
 
     expect(endState[0].filter).toBe('all');
     expect(endState[1].filter).toBe(newFilter);

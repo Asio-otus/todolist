@@ -11,7 +11,6 @@ import {Container} from "../../styles/layout/Container";
 import {authSelectors} from "../auth";
 import {useActions} from "../../app/store";
 import {tasksActions, todolistsActions} from "./index";
-import {FilterValuesT} from "./Todolist/todolists-reducer";
 
 
 export const TodolistsList: React.FC<PropsT> = ({demoMode = false}) => {
@@ -20,45 +19,12 @@ export const TodolistsList: React.FC<PropsT> = ({demoMode = false}) => {
     const tasks = useSelector(selectTasks)
     const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn)
 
-    const {removeTaskTC, addTaskTC, updateTaskTC} = useActions(tasksActions)
-    const {removeTodolistTC, fetchTodolistsTC, addTodolistTC, updateTodolistTitleTC ,changeToDoListFilter} = useActions(todolistsActions)
+    const {fetchTodolists, addTodolist} = useActions(todolistsActions)
 
     useEffect(() => {
         if (!demoMode || !isLoggedIn) {
-            fetchTodolistsTC()
+            fetchTodolists()
         }
-    }, [])
-
-    const addTodolist = useCallback((title: string) => {
-        addTodolistTC({title})
-    }, [])
-
-    const addTask = useCallback((title: string, todolistId: string) => {
-        addTaskTC({title, todolistId})
-    }, [])
-
-    const changeTaskStatus = useCallback((taskId: string, status: TaskStatuses, todolistId: string) => {
-        updateTaskTC({taskId, model: {status}, todolistId})
-    }, [])
-
-    const removeTask = useCallback((taskId: string, toDoListId: string) => {
-        removeTaskTC({taskId, toDoListId})
-    }, [])
-
-    const removeToDoList = useCallback((todolistId: string) => {
-        removeTodolistTC({todolistId})
-    }, [])
-
-    const changeFilter = useCallback((todolistId: string, filter: FilterValuesT) => {
-        changeToDoListFilter({todolistId, filter})
-    }, [])
-
-    const changeTaskTitle = useCallback((taskId: string, title: string, todolistId: string) => {
-        updateTaskTC({taskId, model: {title}, todolistId})
-    }, [])
-
-    const changeTodoListTitle = useCallback((todolistId: string, title: string) => {
-        updateTodolistTitleTC({todolistId, title})
     }, [])
 
     if (!isLoggedIn) {
@@ -82,13 +48,6 @@ export const TodolistsList: React.FC<PropsT> = ({demoMode = false}) => {
                                 key={tl.id}
                                 todolist={tl}
                                 tasks={tasksForTodoList}
-                                removeTask={removeTask}
-                                addTask={addTask}
-                                changeFilter={changeFilter}
-                                changeTaskStatus={changeTaskStatus}
-                                removeTodolist={removeToDoList}
-                                changeTaskTitle={changeTaskTitle}
-                                changeTodoListTitle={changeTodoListTitle}
                             />
                         )
                     })}
