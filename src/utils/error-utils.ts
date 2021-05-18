@@ -1,8 +1,8 @@
-import {setAppError, setAppStatus} from "../feature/application/bll/app-reducer";
-import {ResponseType} from '../api/todolist-api'
+import {ResponseT} from '../api/todolist-api'
 import {Dispatch} from "redux";
+import { setAppError, setAppStatus } from '../app/app-reducer';
 
-export const handleServerAppError = <D>(data: ResponseType<D>, dispatch: Dispatch) => {
+export const handleServerAppError = <D>(data: ResponseT<D>, dispatch: Dispatch) => {
     if (data.messages.length) {
         dispatch(setAppError({error: data.messages[0]}))
     } else {
