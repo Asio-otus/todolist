@@ -35,12 +35,12 @@ TaskIsDoneExample.args = {
         startDate: '',
         deadline: '',
         id: v1(),
-        todoListId: '0',
+        todolistId: '0',
         order: 0,
         addedDate: '',
         entityStatus: 'succeeded'
     },
-    toDoListId: 'todolistId1'
+    todolistId: 'todolistId1'
 }
 
 export const TaskIsNotDoneExample = Template.bind({})
@@ -54,10 +54,10 @@ TaskIsNotDoneExample.args = {
         startDate: '',
         deadline: '',
         id: v1(),
-        todoListId: '0',
+        todolistId: '0',
         order: 0,
         addedDate: '',
         entityStatus: 'succeeded'
     },
-    toDoListId: 'todolistId1'
+    todolistId: 'todolistId1'
 }

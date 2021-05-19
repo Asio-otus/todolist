@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from 'react';
 import {Delete} from "@material-ui/icons";
 import {Button, Card, IconButton} from "@material-ui/core";
-import {ToDoListDomainT} from "./todolists-reducer";
+import {TodolistDomainT, TodolistFilterValuesT} from "./todolists-reducer";
 import {Task} from "../Task/Task";
 import {TaskStatuses, TaskT} from "../../../api/todolist-api";
 import styled from "styled-components";
@@ -9,76 +9,69 @@ import {AddItemForm} from "../../../components/AddItemForm/AddItemForm";
 import {EditableSpan} from "../../../components/EditableSpan/EditableSpan";
 import {useActions} from "../../../app/store";
 import {tasksActions, todolistsActions} from "../index";
+import {RequestStatusT} from "../../../app/app-reducer";
+import {CapitalizeFirstLetter} from "../../../utils/text-utils";
 
-export const Todolist = React.memo(({demoMode = false, ...props}: PropsT) => {
+export const Todolist: React.FC<PropsT> = React.memo(props => {
 
-    const {fetchTasksTC, addTask, removeTask, updateTask} = useActions(tasksActions)
+    const {
+        todolist,
+        tasks,
+        demoMode = false
+    } = props
+
+    const {fetchTasks, addTask} = useActions(tasksActions)
     const {changeTodolistFilter, removeTodolist, updateTodolistTitle} = useActions(todolistsActions)
 
     useEffect(() => {
         if (!demoMode) {
-            fetchTasksTC(props.todolist.id)
+            fetchTasks(todolist.id)
         }
     }, [])
 
-    let tasksForTodoList = props.tasks;
+    let tasksForTodoList = tasks;
 
-    if (props.todolist.filter === 'active') {
-        tasksForTodoList = props.tasks.filter(t => t.status === TaskStatuses.New)
+    if (todolist.filter === 'active') {
+        tasksForTodoList = tasks.filter(t => t.status === TaskStatuses.New)
     }
 
-    if (props.todolist.filter === 'completed') {
-        tasksForTodoList = props.tasks.filter(t => t.status === TaskStatuses.Completed)
+    if (todolist.filter === 'completed') {
+        tasksForTodoList = tasks.filter(t => t.status === TaskStatuses.Completed)
     }
 
-    const filterAll = useCallback(() => {
-        changeTodolistFilter({todolistId: props.todolist.id, filter: 'all'})
-    }, [props.todolist.id])
-
-    const filterActive = useCallback(() => {
-        changeTodolistFilter({todolistId: props.todolist.id, filter: 'active'})
-    }, [props.todolist.id])
-
-    const filterCompleted = useCallback(() => {
-        changeTodolistFilter({todolistId: props.todolist.id, filter: 'completed'})
-    }, [props.todolist.id])
-
-    const changeTaskStatus = useCallback((taskId: string, status: TaskStatuses, todolistId: string) => {
-        updateTask({taskId, model: {status}, todolistId})
-    }, [])
-
-    const changeTaskTitle = useCallback((taskId: string, title: string, todolistId: string) => {
-        updateTask({taskId, model: {title}, todolistId})
-    }, [])
+    const buttonFilterHandler = useCallback((filterValue: TodolistFilterValuesT) => {
+        changeTodolistFilter({todolistId: todolist.id, filter: filterValue})
+    }, [todolist.id])
 
     const removeTodolistHandler = useCallback(() => {
-        removeTodolist(props.todolist.id)
-    }, [props.todolist.id])
+        removeTodolist(todolist.id)
+    }, [todolist.id])
 
     const changeTodolistTitleHandler = useCallback((title: string) => {
-        updateTodolistTitle({todolistId: props.todolist.id, title})
-    }, [props.todolist.id])
+        updateTodolistTitle({todolistId: todolist.id, title})
+    }, [todolist.id])
 
     const addTaskHandler = useCallback((title: string) => {
-        addTask({title, todolistId: props.todolist.id})
-    }, [props.todolist.id])
+        addTask({title, todolistId: todolist.id})
+    }, [todolist.id])
 
 
     return (
         <CardStyled>
             <TitleWrapper>
                 <TaskTitle>
-                    <EditableSpan title={props.todolist.title} changeTitle={changeTodolistTitleHandler}
-                                  disabled={props.todolist.entityStatus === 'loading'}/>
+                    <EditableSpan title={todolist.title} changeTitle={changeTodolistTitleHandler}
+                                  disabled={todolist.entityStatus === 'loading'}/>
                 </TaskTitle>
-                <IconButtonStyled onClick={removeTodolistHandler} disabled={props.todolist.entityStatus === 'loading'}>
+                <IconButtonStyled onClick={removeTodolistHandler} disabled={todolist.entityStatus === 'loading'}>
                     <Delete/>
                 </IconButtonStyled>
             </TitleWrapper>
 
             {/*Add new task input*/}
             <AddTaskWrapper>
-                <AddItemForm addItem={addTaskHandler} label={'Add task'} disabled={props.todolist.entityStatus === 'loading'}/>
+                <AddItemForm addItem={addTaskHandler} label={'Add task'}
+                             disabled={todolist.entityStatus === 'loading'}/>
             </AddTaskWrapper>
 
             {/*Tasks*/}
@@ -86,11 +79,8 @@ export const Todolist = React.memo(({demoMode = false, ...props}: PropsT) => {
                 return (
                     <TaskWrapper key={task.id}>
                         <Task task={task}
-                              toDoListId={props.todolist.id}
-                              toDoListEntityStatus={props.todolist.entityStatus}
-                              changeTaskStatus={changeTaskStatus}
-                              changeTaskTitle={changeTaskTitle}
-                              removeTask={removeTask}/>
+                              todolistId={todolist.id}
+                              todolistEntityStatus={todolist.entityStatus}/>
                     </TaskWrapper>
                 )
             })
@@ -98,28 +88,42 @@ export const Todolist = React.memo(({demoMode = false, ...props}: PropsT) => {
 
             {/*Filter buttons*/}
             <ButtonWrapper>
-                <ButtonStyled
-                    color={props.todolist.filter === 'all' ? 'primary' : 'default'}
-                    onClick={filterAll}
-                    size={'small'}
-                    disabled={props.todolist.entityStatus === 'loading'}>All
-                </ButtonStyled>
-                <ButtonStyled
-                    color={props.todolist.filter === 'active' ? 'primary' : 'default'}
-                    onClick={filterActive}
-                    size={'small'}
-                    disabled={props.todolist.entityStatus === 'loading'}>Active
-                </ButtonStyled>
-                <ButtonStyled
-                    color={props.todolist.filter === 'completed' ? 'primary' : 'default'}
-                    onClick={filterCompleted}
-                    size={'small'}
-                    disabled={props.todolist.entityStatus === 'loading'}>Completed
-                </ButtonStyled>
+                <FilterButton todolistEntityStatus={todolist.entityStatus}
+                              todolistFilter={todolist.filter}
+                              buttonFilter='all'
+                              onClick={buttonFilterHandler}/>
+                <FilterButton todolistEntityStatus={todolist.entityStatus}
+                              todolistFilter={todolist.filter}
+                              buttonFilter='active'
+                              onClick={buttonFilterHandler}/>
+                <FilterButton todolistEntityStatus={todolist.entityStatus}
+                              todolistFilter={todolist.filter}
+                              buttonFilter='completed'
+                              onClick={buttonFilterHandler}/>
             </ButtonWrapper>
         </CardStyled>
-    );
+    )
 })
+
+// Inner components
+const FilterButton: React.FC<FilterButtonPropsT> = props => {
+
+    const {
+        onClick,
+        todolistFilter,
+        buttonFilter,
+        todolistEntityStatus,
+    } = props
+
+    return (
+        <ButtonStyled
+            color={todolistFilter === buttonFilter ? 'primary' : 'default'}
+            onClick={() => onClick(buttonFilter)}
+            size={'small'}
+            disabled={todolistEntityStatus === 'loading'}>{CapitalizeFirstLetter(buttonFilter)}
+        </ButtonStyled>
+    )
+}
 
 // Styles
 const CardStyled = styled(Card)`
@@ -174,7 +178,14 @@ const TaskWrapper = styled.div`
 
 // Types
 type PropsT = {
-    todolist: ToDoListDomainT
+    todolist: TodolistDomainT
     tasks: Array<TaskT>
     demoMode?: boolean
+}
+
+type FilterButtonPropsT = {
+    onClick: (filterValue: TodolistFilterValuesT) => void
+    todolistFilter: TodolistFilterValuesT
+    buttonFilter: TodolistFilterValuesT
+    todolistEntityStatus: RequestStatusT
 }

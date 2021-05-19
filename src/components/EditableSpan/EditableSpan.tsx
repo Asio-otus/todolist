@@ -2,7 +2,7 @@ import React, {ChangeEvent, useState} from "react";
 import {TextField} from "@material-ui/core";
 import styled from "styled-components";
 
-export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
+export const EditableSpan = React.memo((props: EditableSpanPropsT) => {
 
     const [editMode, setEditMode] = useState<boolean>(false)
     const [title, setTitle] = useState<string>(props.title)
@@ -53,7 +53,7 @@ const TextFieldWithoutPadding = styled(TextField)<any>`
 `
 
 // Types
-export type EditableSpanPropsType = {
+export type EditableSpanPropsT = {
     title: string
     changeTitle: (title: string) => void
     disabled?: boolean

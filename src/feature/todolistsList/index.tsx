@@ -15,8 +15,8 @@ const tasksActions = {
 
 
 export {
-    tasksActions,
     todolistsActions,
     todolistsSelectors,
-    taskSelectors
+    tasksActions,
+    taskSelectors,
 }

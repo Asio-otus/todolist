@@ -1,6 +1,6 @@
 import React from "react";
 import {action} from "@storybook/addon-actions";
-import {EditableSpan, EditableSpanPropsType} from "./EditableSpan";
+import {EditableSpan, EditableSpanPropsT} from "./EditableSpan";
 import {Meta, Story} from "@storybook/react/types-6-0";
 import {ReduxStoreProviderDecorator} from "../../storybook/ReduxStoreProviderDecorator";
 
@@ -19,7 +19,7 @@ export default {
     decorators: [ReduxStoreProviderDecorator]
 } as Meta
 
-const Template: Story<EditableSpanPropsType> = (args) => <EditableSpan {...args}/>
+const Template: Story<EditableSpanPropsT> = (args) => <EditableSpan {...args}/>
 
 export const EditableSpanExample = Template.bind({})
 EditableSpanExample.args = {

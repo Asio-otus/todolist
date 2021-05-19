@@ -1,18 +1,17 @@
 import React, {useCallback, useEffect} from 'react';
 import styled from 'styled-components';
 import {AppBar, Button, LinearProgress} from "@material-ui/core";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {InitializationPage} from "./InitializationPage";
 import {TodolistsList} from "../feature/todolistsList/TodolistsList";
-import {initializeApp} from "./app-reducer";
 import {Container} from '../styles/layout/Container';
 import {CustomizedSnackbars} from "../components/ErrorSnackbar/ErrorSnackbar";
 import {SvgLogo} from "../svg/SvgLogo";
-import {logout} from "../feature/auth/auth-reducer";
 import {LoginPage} from "../feature/auth/LoginPage";
-import {appSelectors} from "./";
-import {authSelectors} from "../feature/auth";
+import {appActions, appSelectors} from "./";
+import {authActions, authSelectors} from "../feature/auth";
+import {useActions} from "./store";
 
 
 export const App: React.FC<PropsT> = ({demoMode = false}) => {
@@ -21,14 +20,15 @@ export const App: React.FC<PropsT> = ({demoMode = false}) => {
     const isInitialized = useSelector(appSelectors.selectIsInitialized)
     const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn)
 
-    const dispatch = useDispatch()
+    const {logout} = useActions(authActions)
+    const {initializeApp} = useActions(appActions)
 
     useEffect(() => {
-        dispatch(initializeApp())
+        initializeApp()
     }, [])
 
     const logoutHandler = useCallback(() => {
-        dispatch(logout())
+        logout()
     }, [])
 
     if (!isInitialized) {

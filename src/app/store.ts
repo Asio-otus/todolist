@@ -8,7 +8,7 @@ import {appReducer} from "./app-reducer";
 import {authReducer} from "../feature/auth/auth-reducer";
 import {useMemo} from "react";
 
-// Redux
+// Store
 const rootReducer = combineReducers({
     todolists: todolistsReducer,
     tasks: tasksReducer,

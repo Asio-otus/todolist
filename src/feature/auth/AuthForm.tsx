@@ -3,9 +3,9 @@ import {Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {FormikHelpers, useFormik} from "formik";
 import styled from "styled-components";
 import {useAppDispatch} from "../../app/store";
-import {login} from "./auth-reducer";
+import {authActions} from "./index";
 
-export const AuthForm: React.FC<PropsT> = () => {
+export const AuthForm: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
@@ -31,9 +31,9 @@ export const AuthForm: React.FC<PropsT> = () => {
             rememberMe: false
         },
         onSubmit: async (values, formikHelpers: FormikHelpers<FormikValueT>) => {
-            const action = await dispatch(login(values))
+            const action = await dispatch(authActions.login(values))
 
-            if (login.rejected.match(action)) {
+            if (authActions.login.rejected.match(action)) {
                 if (action.payload?.fieldsErrors?.length) {
                     const error = action.payload?.fieldsErrors[0]
                     formikHelpers.setFieldError(error.field, error.error)
@@ -92,8 +92,6 @@ const FormError = styled.div`
 `
 
 // Types
-type PropsT = {}
-
 type FormikValueT = {
     email: string
     password: string

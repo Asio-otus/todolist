@@ -6,7 +6,8 @@ import {setAppStatus} from "../../../app/app-reducer";
 import {todolistAPI} from "../../../api/todolist-api";
 import {handleServerNetworkError} from "../../../utils/error-utils";
 
-export const fetchTodolists = createAsyncThunk('todolists/fetchToDoLists', async (param, {dispatch, rejectWithValue}) => {
+// Thunks
+const fetchTodolists = createAsyncThunk('todolists/fetchToDoLists', async (param, {dispatch, rejectWithValue}) => {
     dispatch(setAppStatus({status: 'loading'}))
     const res = await todolistAPI.getTodolists()
     try {
@@ -19,7 +20,7 @@ export const fetchTodolists = createAsyncThunk('todolists/fetchToDoLists', async
     }
 })
 
-export const addTodolist = createAsyncThunk('todolists/createToDoList', async (title:string, {dispatch, rejectWithValue}) => {
+const addTodolist = createAsyncThunk('todolists/createToDoList', async (title:string, {dispatch, rejectWithValue}) => {
     dispatch(setAppStatus({status: 'loading'}))
     const res = await todolistAPI.createTodolist(title)
     try {
@@ -32,7 +33,7 @@ export const addTodolist = createAsyncThunk('todolists/createToDoList', async (t
     }
 })
 
-export const removeTodolist = createAsyncThunk('todolists/deleteToDoList', async (todolistId: string, {dispatch}) => {
+const removeTodolist = createAsyncThunk('todolists/deleteToDoList', async (todolistId: string, {dispatch}) => {
     dispatch(setAppStatus({status: 'loading'}))
     dispatch(changeToDoListEntityStatus({todolistId, status: 'loading'}))
     await todolistAPI.deleteTodolist(todolistId)
@@ -40,7 +41,7 @@ export const removeTodolist = createAsyncThunk('todolists/deleteToDoList', async
     return {todolistId}
 })
 
-export const updateTodolistTitle = createAsyncThunk('todolists/updateToDoListTitle', async (param: { todolistId: string, title: string }, {dispatch}) => {
+const updateTodolistTitle = createAsyncThunk('todolists/updateToDoListTitle', async (param: { todolistId: string, title: string }, {dispatch}) => {
     dispatch(setAppStatus({status: 'loading'}))
     await todolistAPI.updateTodolistTitle(param.todolistId, param.title)
     dispatch(setAppStatus({status: 'succeeded'}))
@@ -54,12 +55,12 @@ export const todolistAsyncActions = {
     updateTodolistTitle
 }
 
-// Reducer
+// Slice
 export const todolistSlice = createSlice({
     name: 'todolists',
-    initialState: [] as Array<ToDoListDomainT>,
+    initialState: [] as Array<TodolistDomainT>,
     reducers: {
-        changeTodolistFilter(state, action: PayloadAction<{ todolistId: string, filter: FilterValuesT }>) {
+        changeTodolistFilter(state, action: PayloadAction<{ todolistId: string, filter: TodolistFilterValuesT }>) {
             const index = state.findIndex(tl => tl.id === action.payload.todolistId)
             state[index].filter = action.payload.filter
         },
@@ -90,16 +91,16 @@ export const todolistSlice = createSlice({
 
 export const todolistsReducer = todolistSlice.reducer
 
-
+// Actions
 export const {
     changeTodolistFilter,
     changeToDoListEntityStatus,
 } = todolistSlice.actions
 
 // Types
-export type ToDoListDomainT = TodolistT & {
-    filter: FilterValuesT
+export type TodolistDomainT = TodolistT & {
+    filter: TodolistFilterValuesT
     entityStatus: RequestStatusT
 }
 
-export type FilterValuesT = 'all' | 'active' | 'completed'
+export type TodolistFilterValuesT = 'all' | 'active' | 'completed'

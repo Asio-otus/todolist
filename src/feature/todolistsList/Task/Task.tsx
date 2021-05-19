@@ -5,34 +5,48 @@ import {TaskStatuses, TaskT} from "../../../api/todolist-api";
 import styled from "styled-components";
 import {EditableSpan} from "../../../components/EditableSpan/EditableSpan";
 import {RequestStatusT} from "../../../app/app-reducer";
+import {useActions} from "../../../app/store";
+import {tasksActions} from "../index";
 
-export const Task = React.memo((props: TaskPropsT) => {
+export const Task: React.FC<TaskPropsT> = React.memo(props => {
 
-    const removeTask = useCallback(() => {
-        props.removeTask({taskId: props.task.id, todolistId: props.toDoListId})
+    const {
+        task,
+        todolistId,
+        todolistEntityStatus
+    } = props
+
+    const {updateTask, removeTask} = useActions(tasksActions)
+
+    const removeTaskHandler = useCallback(() => {
+        removeTask({taskId: task.id, todolistId})
     }, [])
 
-    const changeStatus = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        props.changeTaskStatus(props.task.id, e.currentTarget.checked ? TaskStatuses.Completed : TaskStatuses.New, props.toDoListId)
+    const changeTaskStatus = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        updateTask({taskId: task.id,
+            model: {status: e.currentTarget.checked ? TaskStatuses.Completed : TaskStatuses.New},
+            todolistId})
     }, [])
 
-    const changeTitle = useCallback((title: string) => {
-        props.changeTaskTitle(props.task.id, title, props.toDoListId)
+    const changeTaskTitle = useCallback((title: string) => {
+        updateTask({taskId: task.id,
+            model: {title},
+            todolistId})
     }, [])
 
     return (
-        <ComponentWrapper key={props.task.id}>
+        <ComponentWrapper key={task.id}>
             <CheckboxStyled
-                checked={props.task.status === TaskStatuses.Completed}
-                onChange={changeStatus}
-                disabled={props.task.entityStatus === 'loading' || props.toDoListEntityStatus === 'loading'}/>
-            <StyledEditableSpan taskStatus={props.task.status}>
+                checked={task.status === TaskStatuses.Completed}
+                onChange={changeTaskStatus}
+                disabled={task.entityStatus === 'loading' || todolistEntityStatus === 'loading'}/>
+            <StyledEditableSpan taskStatus={task.status}>
                 <EditableSpan
-                    title={props.task.title}
-                    changeTitle={changeTitle}
-                    disabled={props.task.entityStatus === 'loading' || props.toDoListEntityStatus === 'loading'}/>
+                    title={task.title}
+                    changeTitle={changeTaskTitle}
+                    disabled={task.entityStatus === 'loading' || todolistEntityStatus === 'loading'}/>
             </StyledEditableSpan>
-            <IconButtonStyled onClick={removeTask} disabled={props.task.entityStatus === 'loading' || props.toDoListEntityStatus === 'loading'}>
+            <IconButtonStyled onClick={removeTaskHandler} disabled={task.entityStatus === 'loading' || todolistEntityStatus === 'loading'}>
                 <Delete/>
             </IconButtonStyled>
         </ComponentWrapper>
@@ -54,7 +68,7 @@ const StyledEditableSpan = styled.div<any>`
 
   padding-left: 45px;
 
-  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
+  opacity: ${({taskStatus}) => (taskStatus === TaskStatuses.Completed) ? .5 : 1};
 `
 
 const CheckboxStyled = styled(Checkbox)<any>`
@@ -62,7 +76,7 @@ const CheckboxStyled = styled(Checkbox)<any>`
   z-index: 1;
   top: -10px;
 
-  opacity: ${props => (props.taskStatus === TaskStatuses.Completed) ? .5 : 1};
+  opacity: ${({taskStatus}) => (taskStatus === TaskStatuses.Completed) ? .5 : 1};
   margin-right: 5px;
 `
 
@@ -75,9 +89,6 @@ const IconButtonStyled = styled(IconButton)`
 // Types
 export type TaskPropsT = {
     task: TaskT
-    toDoListId: string
-    toDoListEntityStatus: RequestStatusT
-    changeTaskStatus: (taskId: string, status: TaskStatuses, todolistId: string) => void
-    changeTaskTitle: (taskId: string, title: string, todolistId: string) => void
-    removeTask: (param: {taskId: string, todolistId: string}) => void
+    todolistId: string
+    todolistEntityStatus: RequestStatusT
 }

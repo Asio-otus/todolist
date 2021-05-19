@@ -35,7 +35,7 @@ const initialGlobalState: AppRootStateT = {
                 startDate: '',
                 deadline: '',
                 id: v1(),
-                todoListId: "todolistId1",
+                todolistId: "todolistId1",
                 order: 0,
                 addedDate: '',
                 entityStatus: 'succeeded'
@@ -48,7 +48,7 @@ const initialGlobalState: AppRootStateT = {
                 startDate: '',
                 deadline: '',
                 id: v1(),
-                todoListId: "todolistId1",
+                todolistId: "todolistId1",
                 order: 0,
                 addedDate: '',
                 entityStatus: 'succeeded'
@@ -63,7 +63,7 @@ const initialGlobalState: AppRootStateT = {
                 startDate: '',
                 deadline: '',
                 id: v1(),
-                todoListId: "todolistId2",
+                todolistId: "todolistId2",
                 order: 0,
                 addedDate: '',
                 entityStatus: 'loading'
@@ -76,7 +76,7 @@ const initialGlobalState: AppRootStateT = {
                 startDate: '',
                 deadline: '',
                 id: v1(),
-                todoListId: "todolistId2",
+                todolistId: "todolistId2",
                 order: 0,
                 addedDate: '',
                 entityStatus: 'loading'

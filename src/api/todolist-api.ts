@@ -40,7 +40,7 @@ export const todolistAPI = {
 
 // AuthAPI
 export const authAPI = {
-    login(data: LoginParamsType) {
+    login(data: LoginParamsT) {
         return instance.post<ResponseT<{userId: number}>>('auth/login', data)
     },
     logout() {
@@ -82,7 +82,7 @@ export type TaskT = {
     startDate: string
     deadline: string
     id: string
-    todoListId: string
+    todolistId: string
     order: number
     addedDate: string
     entityStatus: RequestStatusT
@@ -111,7 +111,7 @@ type ResponseTasksT = {
     items: Array<TaskT>
 }
 
-export type LoginParamsType = {
+export type LoginParamsT = {
     email: string
     password: string
     rememberMe: boolean

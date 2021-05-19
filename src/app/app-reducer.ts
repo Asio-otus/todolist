@@ -1,14 +1,18 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {authAPI} from "../api/todolist-api";
-import { setIsLoggedIn } from "../feature/auth/auth-reducer";
+import {authActions} from "../feature/auth";
 
 // Thunk
-export const initializeApp = createAsyncThunk('app/initializeApp', async (param, {dispatch}) => {
+const initializeApp = createAsyncThunk('app/initializeApp', async (param, {dispatch}) => {
     const res = await authAPI.me()
     if (res.data.resultCode === 0) {
-        dispatch(setIsLoggedIn({value: true}))
+        dispatch(authActions.setIsLoggedIn({value: true}))
     }
 })
+
+export const authAsyncActions = {
+    initializeApp
+}
 
 // Slice
 const initialState: InitialStateType = {
@@ -17,7 +21,7 @@ const initialState: InitialStateType = {
     isInitialized: false
 }
 
-const slice = createSlice({
+export const appSlice = createSlice({
     name: 'app',
     initialState: initialState,
     reducers: {
@@ -36,10 +40,9 @@ const slice = createSlice({
 })
 
 // Reducer
-export const appReducer = slice.reducer
+export const appReducer = appSlice.reducer
 
-// Actions
-export const {setAppStatus, setAppError} = slice.actions
+export const {setAppStatus, setAppError} = appSlice.actions
 
 // Types
 export type RequestStatusT = 'idle' | 'loading' | 'succeeded' | 'failed'
